@@ -1,60 +1,57 @@
-# Ad Studio (white-label)
+# Ad Studio
 
-A white-label ad & content production studio — a static, self-contained site
-generator for organizing creative work: dashboards, concept review, a component
-library, aspect-ratio production, motion/video handoff, competitor research, and
-copy/prompt libraries.
+One approved creative in. A placement-ready campaign pack out.
 
-> Cloned from an internal ad-production project and stripped down to a reusable
-> starting point. Rebrand it, point it at a client, or repurpose the engine for
-> a SaaS/agency offering.
+Ad Studio helps founders, media buyers, and lean agencies adapt finished ad
+creative for feed, stories, reels, square, and display placements without
+rebuilding every format by hand.
 
-## Rebrand in one place
+## Current product
 
-Edit [`brand.config.mjs`](./brand.config.mjs) to change the studio name,
-tagline, logo, home link, and theme colors across every generated page. Leave
-`logo: ''` to show a text mark instead of an image.
+- Upload a PNG, JPG, or WebP in the browser
+- Preview 4:5, 9:16, 1:1, and 1.91:1 placements
+- Adjust focus and zoom independently for every format
+- See placement safe-zone overlays
+- Preview subtle motion
+- Export correctly sized PNGs individually or as a campaign pack
 
-```js
-export const WHITE_LABEL = {
-  name: 'Ad Studio',
-  tagline: 'White-label ad & content production studio',
-  mark: 'AS',
-  homeHref: '/studio.html',
-  logo: '', // '' = text mark, or '/your-logo.svg'
-  theme: { headerBg: '#0B1F3A', accent: '#00B2E2', /* ... */ },
-};
-```
+Files remain local to the browser in the current beta.
 
 ## Quick start
 
 ```bash
 npm install
-npm run generate:vma   # build the site pages from /scripts data
 npm run dev
 ```
 
-Open [http://localhost:5173/studio.html](http://localhost:5173/studio.html)
+Open [http://localhost:5173](http://localhost:5173)
 
-## How it works
+## Product direction
 
-- Page content + data live in `scripts/*.mjs` (one module per section).
-- `scripts/generate-*.mjs` render static HTML into `public/`.
-- `scripts/shared-doc-header.mjs` renders the shared nav header, driven by
-  `brand.config.mjs`.
-- The root `motion-concept-lab.html` is a Vite + Remotion preview app.
+The first paid offer is a high-touch $99 campaign pack:
 
-## Scripts
+- Four reviewed static adaptations
+- Safe-zone and legibility QA
+- One lightweight motion variation
+- One revision round
+- 48-hour target turnaround
 
-```bash
-npm run generate:vma           # Generate all site pages + motion lab + redirects
-npm run generate:motion-lab    # Motion Concept Lab only
-npm run remotion:studio        # Remotion Studio for MP4 renders
-npm run lint                   # oxlint
-```
+The service validates demand and reveals which corrections should be automated
+before subscriptions, accounts, or a large editor are built.
 
-## Where to refine next
+## Architecture
 
-- Swap remaining domain-specific copy/data in `scripts/*-data.mjs`.
-- Replace sample assets under `public/` (images were excluded from this clone).
-- Update navigation labels/links in `scripts/shared-doc-header.mjs` (`PRIMARY_NAV`).
+- `src/App.tsx` — customer-facing campaign-pack workflow
+- `src/index.css` — responsive product site and workspace
+- `scripts/` and `src/remotion/` — inherited production and motion R&D
+- `public/` — inherited internal reference output; intentionally excluded from
+  the production Vite build
+
+## Next production milestones
+
+1. Replace placeholder contact email and choose a product name/domain.
+2. Add a real intake/payment flow for the high-touch pilot.
+3. Add AI-assisted outpainting/recomposition with explicit customer review.
+4. Render downloadable MP4 motion variations through Remotion.
+5. Add accounts, project persistence, usage limits, and subscriptions only
+   after repeat demand is demonstrated.

@@ -5,6 +5,9 @@ import { resolve } from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // Keep inherited internal HTML/assets in the repository as source material,
+  // but never copy them into the customer-facing production deployment.
+  publicDir: false,
   server: {
     watch: {
       // Large import dumps can lock files and crash Vite's watcher on Windows
@@ -24,9 +27,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        // Ad Production site is static HTML under public/ + root motion lab.
-        // Root index.html redirects to /studio.html.
-        motionLab: resolve(__dirname, 'motion-concept-lab.html'),
+        // Customer product only. Internal generators are not public routes.
+        app: resolve(__dirname, 'index.html'),
       },
     },
   },
