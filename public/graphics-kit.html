@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Graphics Component Kit · MedVirtual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    
+  
+@font-face {
+  font-family: 'Be Vietnam';
+  src: url('/assets/brand/medvirtual/fonts/BeVietnam-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Be Vietnam';
+  src: url('/assets/brand/medvirtual/fonts/BeVietnam-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Be Vietnam';
+  src: url('/assets/brand/medvirtual/fonts/BeVietnam-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --mv-primary: #077999;
+  --mv-cyan: #00B2E2;
+  --mv-deep-teal: #0D546B;
+  --mv-accent: #00C0D4;
+  --mv-bright-accent: #27E6FA;
+  --mv-neutral-blue: #F0F5FF;
+  --mv-neutral-warm: #EFEDE1;
+  --mv-ink: #161511;
+  --mv-white: #FFFFFF;
+  --mv-gradient-primary: linear-gradient(90deg, #077999 0%, #00B2E2 100%);
+  --mv-gradient-light: linear-gradient(90deg, #F0F5FF 0%, #00B2E2 100%);
+  --mv-gradient-bright: linear-gradient(90deg, #27E6FA 0%, #F0F5FF 100%);
+  --mv-gradient-deep: linear-gradient(90deg, #0D546B 0%, #00C0D4 100%);
+  --mv-font: "Be Vietnam", Inter, Arial, sans-serif;
+}
+
+  .doc-header {
+    background: #0B1F3A;
+    color: #ffffff;
+    border-bottom: 2px solid #077999;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    font-family: var(--mv-font);
+  }
+  .doc-header__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .doc-header__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .doc-header__logo {
+    display: block;
+    height: 36px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .doc-header__mark { display: none; }
+  .doc-header__title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #f8fafc;
+  }
+  .doc-header__tagline {
+    margin: 0.1rem 0 0;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: #a3a3a3;
+  }
+  .doc-header__page {
+    margin: 0.85rem 0 0;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .doc-header__page-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 650;
+    color: #e2e8f0;
+  }
+  .doc-header__page-sub {
+    margin: 0.25rem 0 0;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: #a3a3a3;
+    max-width: 820px;
+  }
+  .doc-nav-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem 0.85rem;
+  }
+  .doc-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .doc-nav a,
+  .doc-nav-dd > summary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #d4d4d4;
+    text-decoration: none;
+    border: 1px solid transparent;
+    list-style: none;
+    cursor: pointer;
+    background: transparent;
+  }
+  .doc-header details.doc-nav-dd {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .doc-header details.doc-nav-dd > summary {
+    background: transparent !important;
+    color: #d4d4d4 !important;
+    font-weight: 500 !important;
+    border: 1px solid transparent !important;
+    padding: 0.45rem 0.75rem !important;
+  }
+  .doc-nav-dd > summary::-webkit-details-marker { display: none; }
+  .doc-nav-dd > summary::after {
+    content: '▾';
+    margin-left: 0.35em;
+    font-size: 0.7em;
+    opacity: 0.75;
+  }
+  .doc-nav a:hover,
+  .doc-header details.doc-nav-dd > summary:hover {
+    color: #ffffff !important;
+    background: rgba(0, 178, 226, 0.18) !important;
+  }
+  .doc-nav a.active {
+    color: #ffffff;
+    background: #077999;
+    font-weight: 700;
+  }
+  .doc-nav a.nav-team {
+    color: #0B1F3A;
+    background: #B8F000;
+    font-weight: 800;
+    border-color: rgba(184, 240, 0, 0.5);
+  }
+  .doc-nav a.nav-team:hover {
+    color: #0B1F3A !important;
+    background: #d4ff4d !important;
+  }
+  .doc-nav a.nav-team.active {
+    color: #0B1F3A;
+    background: #B8F000;
+    box-shadow: inset 0 0 0 2px #077999;
+  }
+  .doc-header details.doc-nav-dd.active > summary,
+  .doc-header details.doc-nav-dd[open] > summary {
+    color: #ffffff !important;
+    background: #077999 !important;
+    font-weight: 700 !important;
+  }
+  .doc-nav-dd { position: relative; }
+  .doc-nav-dd__menu {
+    position: absolute;
+    top: calc(100% + 0.35rem);
+    left: 0;
+    min-width: 12rem;
+    background: #171717;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 10px;
+    padding: 0.35rem;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .doc-nav-dd__menu a {
+    display: block;
+    white-space: nowrap;
+    border-radius: 7px;
+  }
+  .doc-nav-dd__menu a.active {
+    background: rgba(0, 178, 226, 0.22);
+    color: #7dd3fc;
+  }
+  .doc-nav-sep {
+    width: 1px;
+    height: 1.35rem;
+    background: rgba(255,255,255,0.22);
+    flex-shrink: 0;
+  }
+  .doc-subnav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+  .doc-subnav a {
+    color: #7dd3fc;
+    text-decoration: none;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+  }
+  .doc-subnav a:hover { border-color: #00B2E2; color: #fff; }
+  .doc-subnav a.active {
+    background: rgba(0, 178, 226, 0.22);
+    border-color: #00B2E2;
+    color: #fff;
+  }
+  @media (max-width: 640px) {
+    .doc-header { padding: 1rem; }
+    .doc-header__logo { height: 30px; max-width: 130px; }
+    .doc-nav-sep { display: none; }
+  }
+
+    main { max-width: 1180px; margin: 0 auto; padding: 1.25rem 1.25rem 4rem; font-family: "Be Vietnam Pro", system-ui, sans-serif; color: #0B1F3A; }
+    .kit-hero { margin-bottom: 1rem; }
+    .kit-hero h1 { margin: 0 0 0.5rem; font-size: 1.75rem; }
+    .kit-alert { margin: 0.65rem 0; padding: 0.55rem 0.85rem; background: #FFF4E5; border: 1px solid #E8C99A; border-radius: 8px; font-weight: 700; font-size: 0.88rem; color: #6B4E16; }
+    .kit-alert--win { background: #E8F8EC; border-color: #7BCF8E; color: #1A5C2E; font-weight: 600; }
+    .inspect-options { margin-top: 0.85rem; font-size: 0.88rem; }
+    .inspect-options ul { margin: 0.35rem 0 0; padding-left: 1.1rem; }
+    .kit-prod { margin: 1rem 0; padding: 1rem; background: #fff; border: 1px solid #D6E4EC; border-radius: 12px; }
+    .kit-prod h2 { margin: 0 0 0.75rem; font-size: 1.1rem; }
+    .kit-prod__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .kit-del { display: grid; gap: 0.2rem; padding: 0.5rem 0; border-bottom: 1px solid #EEF3F7; font-size: 0.85rem; }
+    .kit-del code { font-size: 0.78rem; }
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem;
+      margin: 0.85rem 0; padding: 0.75rem 1rem; background: #F0F5FF; border: 1px solid #D6E4EC; border-radius: 10px;
+    }
+    .kit-quickstart strong { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; color: #077999; }
+    .kit-quickstart__links { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .kit-jump {
+      display: inline-block; padding: 0.4rem 0.75rem; border-radius: 8px; background: #B8F000; color: #0B1F3A;
+      font-weight: 800; font-size: 0.82rem; text-decoration: none;
+    }
+    .kit-jump:hover { filter: brightness(1.05); }
+    .kit-assets { margin: 0.75rem 0; background: #fff; border: 1px solid #D6E4EC; border-radius: 10px; padding: 0.65rem 1rem; }
+    .kit-assets summary { cursor: pointer; font-weight: 800; color: #0B1F3A; }
+    .kit-assets__list { margin: 0.5rem 0 0; padding-left: 1.1rem; color: #4A6275; font-size: 0.9rem; }
+    .kit-assets__list a { color: #077999; font-weight: 700; }
+    .kit-order { margin-top: 0.75rem; font-size: 0.92rem; color: #4A6275; }
+    .kit-toolbar { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .kit-toolbar label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #4A6275; }
+    .kit-toolbar select { display: block; margin-top: 0.25rem; font: inherit; padding: 0.45rem 0.6rem; border-radius: 8px; border: 1px solid #D6E4EC; min-width: 200px; }
+    .kit-master__head h2 { margin: 0 0 0.35rem; }
+    .kit-square-ref {
+      display: grid; grid-template-columns: 1fr 200px; gap: 1rem; align-items: center;
+      background: #fff; border: 1px solid #D6E4EC; border-left: 4px solid #22C55E; border-radius: 12px;
+      padding: 1rem 1.15rem; margin-bottom: 1.25rem;
+    }
+    .tag { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 999px; }
+    .tag-live { background: #dcfce7; color: #166534; }
+    .square-btn { border: none; padding: 0; background: none; cursor: zoom-in; border-radius: 8px; overflow: hidden; }
+    .square-btn img { width: 200px; height: 200px; object-fit: cover; display: block; }
+    .btn-link { font: inherit; font-weight: 700; color: #077999; background: none; border: none; cursor: pointer; padding: 0; text-decoration: underline; }
+    .kit-job { background: #fff; border: 1px solid #D6E4EC; border-radius: 14px; padding: 1.15rem; }
+    .kit-job__head h3 { margin: 0 0 0.35rem; }
+    .kit-job__head h3 span { color: #077999; font-weight: 700; }
+    .kit-split { display: grid; grid-template-columns: 300px 1fr; gap: 1.25rem; margin-top: 1rem; }
+    @media (max-width: 900px) { .kit-split { grid-template-columns: 1fr; } .kit-square-ref { grid-template-columns: 1fr; } }
+    .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; }
+    .comp-tile {
+      text-align: left; font: inherit; cursor: pointer; background: #F4F8FB; border: 1px solid #D6E4EC;
+      border-radius: 10px; padding: 0.55rem; transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .comp-tile:hover { border-color: #077999; box-shadow: 0 4px 14px rgba(7,121,153,0.12); }
+    .comp-tile strong { display: block; font-size: 0.82rem; margin-top: 0.35rem; }
+    .comp-tile span { font-size: 0.7rem; color: #6a7682; }
+    .comp-tile__thumb { height: 72px; overflow: hidden; border-radius: 6px; background: #0B1F3A; display: flex; align-items: center; justify-content: center; }
+    .comp-tile__thumb img { max-height: 100%; max-width: 100%; object-fit: contain; }
+    .mini-list { margin: 0; padding-left: 1rem; font-size: 0.68rem; color: #fff; }
+    .mini-text { font-size: 0.65rem; font-weight: 800; color: #fff; text-transform: uppercase; padding: 0.25rem; line-height: 1.2; }
+    .swatch-row { display: flex; gap: 4px; }
+    .swatch-row span { width: 28px; height: 28px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3); }
+    .mock-scaler { transform-origin: top left; overflow: hidden; margin-bottom: 0.5rem; }
+    .mock-stage { position: relative; overflow: hidden; font-family: "Be Vietnam Pro", sans-serif; transform-origin: top left; }
+    .mock-panel { position: absolute; inset: 0; opacity: 0.9; }
+    .mock-person { position: absolute; object-fit: contain; object-position: bottom center; }
+    .mock-person--transparent { background: repeating-conic-gradient(#D6E4EC 0% 25%, #fff 0% 50%) 50% / 12px 12px; }
+    .thumb-checker { background: repeating-conic-gradient(#D6E4EC 0% 25%, #fff 0% 50%) 50% / 10px 10px; border-radius: 8px; overflow: hidden; min-height: 72px; display: flex; align-items: flex-end; justify-content: center; }
+    .thumb-checker img { max-width: 100%; max-height: 88px; object-fit: contain; }
+    .thumb-scrub { border-radius: 8px; min-height: 72px; display: flex; align-items: center; justify-content: center; color: #0B1F3A; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .inspect-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: left; }
+    .inspect-dual small { color: #6a7682; display: block; margin-bottom: 0.35rem; font-size: 0.78rem; }
+    .inspect-checker img { max-height: 42vh; }
+    .inspect-dual img { max-width: 100%; border-radius: 8px; }
+    .mock-logo { position: absolute; }
+    .mock-headline { position: absolute; font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; }
+    .mock-sub { position: absolute; font-weight: 600; }
+    .mock-benefits { position: absolute; display: flex; flex-direction: column; }
+    .mock-chip { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; border: 1px solid; font-weight: 700; }
+    .mock-price { position: absolute; font-weight: 900; padding: 12px 20px; border-radius: 12px; }
+    .mock-trust { position: absolute; font-weight: 800; padding: 8px 14px; border-radius: 999px; border: 2px solid; background: rgba(0,0,0,0.35); color: #fff; }
+    .draft-btn { display: block; width: 100%; max-width: 360px; border: none; padding: 0; background: none; cursor: zoom-in; position: relative; border-radius: 10px; overflow: hidden; }
+    .draft-btn img { width: 100%; display: block; }
+    .draft-btn span { position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.7); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 6px; }
+    .awaiting { padding: 2rem; background: #F4F8FB; border: 2px dashed #D6E4EC; border-radius: 10px; color: #6a7682; text-align: center; }
+    .inspect-modal[hidden] { display: none; }
+    .inspect-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+    .inspect-modal__backdrop { position: absolute; inset: 0; background: rgba(6,16,28,0.82); }
+    .inspect-modal__panel {
+      position: relative; background: #fff; border-radius: 14px; max-width: min(920px, 96vw); max-height: 90vh;
+      overflow: auto; padding: 1.25rem 1.35rem; box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    }
+    .inspect-modal__close { position: absolute; top: 0.5rem; right: 0.65rem; border: none; background: none; font-size: 1.75rem; cursor: pointer; color: #4A6275; line-height: 1; }
+    .inspect-preview { margin: 0.75rem 0; text-align: center; }
+    .inspect-preview img { max-width: 100%; max-height: 55vh; object-fit: contain; border-radius: 8px; background: #0B1F3A; }
+    .inspect-hint { color: #6a7682; font-size: 0.88rem; margin: 0; }
+    .inspect-specs { color: #4A6275; font-size: 0.85rem; }
+    .inspect-lines div { margin-bottom: 0.65rem; }
+    .inspect-lines small { color: #6a7682; display: block; }
+    .inspect-lines strong { font-size: 1.35rem; display: block; }
+    .inspect-list { font-size: 1rem; line-height: 1.6; }
+    .inspect-text { font-size: 1.1rem; font-weight: 700; }
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.75rem; }
+    .swatch-grid div { text-align: center; }
+    .swatch-grid span { display: block; height: 64px; border-radius: 10px; margin-bottom: 0.35rem; border: 1px solid #D6E4EC; }
+    .inspect-actions a, .copy-btn { font: inherit; font-weight: 800; color: #077999; background: #F0F5FF; border: 1px solid #D6E4EC; padding: 0.5rem 0.85rem; border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-block; }
+    .note { color: #6a7682; font-size: 0.88rem; }
+    code { font-size: 0.85em; background: #F4F8FB; padding: 0.1rem 0.35rem; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header class="doc-header">
+  <div class="doc-header__row">
+    <a class="doc-header__brand" href="/studio.html">
+      <span class="doc-header__mark" style="display:inline-flex;align-items:center;justify-content:center;height:36px;min-width:36px;padding:0 0.5rem;border-radius:8px;background:#00B2E2;color:#fff;font-weight:800;font-size:0.95rem;">AS</span>
+      <div>
+        <h1 class="doc-header__title">Ad Studio</h1>
+        <p class="doc-header__tagline">White-label ad &amp; content production studio</p>
+      </div>
+    </a>
+    <div class="doc-nav-wrap">
+      <nav class="doc-nav" aria-label="Primary"><a href="/studio.html" class="">Dashboard</a><a href="/vma-approved.html" class="">Winners</a><a href="/ideas.html" class="">Concept Review</a><a href="/graphics-kit.html" class="active nav-team">Component Library</a><a href="/vma-static.html" class="">Static Production</a><a href="/vma-video.html" class="">Animated Video</a><a href="/vma-chatgpt.html" class="">Copy &amp; Prompts</a><a href="/competitors.html" class="">Competitors</a><a href="/vma-handoff.html" class="">Handoff</a></nav>
+    </div>
+  </div>
+  <div class="doc-header__page">
+          <h2 class="doc-header__page-title">Component Library</h2>
+          <p class="doc-header__page-sub">VMA-04 green person · download components · composition reference — not an editor.</p>
+          
+        </div>
+</header>
+<script>
+(function () {
+  document.querySelectorAll('.doc-nav-dd').forEach((dd) => {
+    dd.addEventListener('toggle', () => {
+      if (!dd.open) return;
+      document.querySelectorAll('.doc-nav-dd').forEach((other) => {
+        if (other !== dd) other.open = false;
+      });
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.doc-nav-dd')) return;
+    document.querySelectorAll('.doc-nav-dd[open]').forEach((dd) => { dd.open = false; });
+  });
+})();
+</script>
+  <main>
+    <div class="hero kit-hero">
+      <h1>Component Library</h1>
+      <p><b>Production handoff — not an editor.</b> VMA-04 HIPAA Green (green-scrub admin, HIPAA Compliant badge) is the current winning direction. Static images are producing leads more efficiently than longer custom video concepts. New static and motion work should stay visually close to this — do not invent unrelated directions.</p>
+      <p class="lede">Inspect · open · download every piece. Copy text and hex colors. Layout mock = <strong>composition reference only</strong> — rebuild in Photoshop / Illustrator / Figma / CapCut / AE.</p>
+      <div class="kit-alert kit-alert--win">✅ Winner: <b>VMA-04 HIPAA Green</b> — not VMA-01 Spanish Green. Current winner: VMA-04 HIPAA Green — the green-scrub admin with the HIPAA Compliant badge and circular $10/hr offer. If your Monday ticket says VMA-01 Spanish Green, pause that work and use VMA-04 instead. VMA-01 is only an approved variation when explicitly briefed (Spanish badge).</div>
+      <div class="kit-alert">⛔ Paused: VMA-02 Cobalt · VMA-03 Signal Yellow — do not start new work</div>
+      <div class="kit-quickstart">
+        <strong>Jump to your job:</strong>
+        <div class="kit-quickstart__links" id="quickstartLinks"></div>
+      </div>
+      <details class="kit-assets" open>
+        <summary>Shared files — open or right-click save (no hunting)</summary>
+        <ul class="kit-assets__list" id="sharedAssetList"></ul>
+      </details>
+      <div class="kit-order">Active: <b>VMA-04</b> · Variation when briefed: VMA-01 · Start <b>4:5</b></div>
+    </div>
+
+    <section class="kit-prod" id="kit-deliverables">
+      <h2>Production deliverables</h2>
+      <div class="kit-prod__grid" id="deliverablesPanel"></div>
+    </section>
+
+    <div class="kit-toolbar">
+      <label>Master
+        <select id="masterSelect"></select>
+      </label>
+      <label>Target size
+        <select id="ratioSelect"></select>
+      </label>
+    </div>
+
+    <div id="kitWorkspace"></div>
+
+    <div id="inspectModal" class="inspect-modal" hidden>
+      <div class="inspect-modal__backdrop" data-close></div>
+      <div class="inspect-modal__panel" role="dialog" aria-modal="true">
+        <button type="button" class="inspect-modal__close" data-close aria-label="Close">×</button>
+        <h2 id="inspectTitle"></h2>
+        <p id="inspectHint" class="inspect-hint"></p>
+        <div id="inspectPreview" class="inspect-preview"></div>
+        <ul id="inspectSpecs" class="inspect-specs"></ul>
+        <div id="inspectActions" class="inspect-actions"></div>
+      </div>
+    </div>
+
+    <script type="application/json" id="kitData">{"winningNote":"VMA-04 HIPAA Green (green-scrub admin, HIPAA Compliant badge) is the current winning direction. Static images are producing leads more efficiently than longer custom video concepts. New static and motion work should stay visually close to this — do not invent unrelated directions.","activeRequestNote":"Current winner: VMA-04 HIPAA Green — the green-scrub admin with the HIPAA Compliant badge and circular $10/hr offer. If your Monday ticket says VMA-01 Spanish Green, pause that work and use VMA-04 instead. VMA-01 is only an approved variation when explicitly briefed (Spanish badge).","productionStatus":{"04":{"label":"Winning Direction","tone":"win"},"01":{"label":"Approved Variation","tone":"ok"},"02":{"label":"Paused","tone":"pause"},"03":{"label":"Paused","tone":"pause"}},"typography":{"family":"Be Vietnam Pro","headline":{"weight":900,"case":"ALL CAPS","letterSpacing":"-0.03em","lineHeight":"0.94–0.98","accentLine":"Line 2 — VIRTUAL — uses concept accent color","mobile":"Headline must read in under 2 seconds on a phone — scale up, never shrink below legibility"},"subhead":{"weight":600,"size":"≈30–34px at 4:5 reference"},"benefits":{"weight":700,"size":"≈26–28px at 4:5 reference"},"badge":{"weight":800,"size":"Offer / trust badges — high contrast, never pink"}},"logoAssets":[{"label":"Logo · white SVG","href":"/assets/brand/medvirtual/logo-white.svg","format":"SVG"},{"label":"Logo · color SVG","href":"/assets/brand/medvirtual/logo-colored.svg","format":"SVG"},{"label":"Logomark · white SVG","href":"/assets/brand/medvirtual/logomark-white.svg","format":"SVG"},{"label":"Logomark · color SVG","href":"/assets/brand/medvirtual/logomark-colored.svg","format":"SVG"}],"personAssets":{"transparent":"/assets/graphics-kit/options/green-person-a-brunette-bun.png","referenceCrop":"/assets/graphics-kit/options/green-person-a-brunette-bun.png","scrubColor":"#1F7A4D","dimensions":"High-res transparent PNG · 1024×1536","options":[{"id":"a","label":"Brunette · bun (matches winner)","href":"/assets/graphics-kit/options/green-person-a-brunette-bun.png"},{"id":"b","label":"Brunette · hair down","href":"/assets/graphics-kit/options/green-person-b-brunette-down.png"},{"id":"c","label":"Blonde · hair down","href":"/assets/graphics-kit/options/green-person-c-blonde.png"}],"rules":["No text, badges, backgrounds, or logos baked into the person file","Recolor scrubs only — preserve natural skin tones","Reposition and scale per ratio — never stretch"]},"backgroundSpec":{"type":"gradient","css":"linear-gradient(135deg, #0a1628 0%, #0d2840 100%)","hex":["#0a1628","#0d2840"],"note":"Rebuild as a separate layer behind the person. Match approved static energy — deep navy/teal, not flat black."},"iconElements":[{"id":"check","label":"Checkmark (benefit chips)","type":"svg-inline","note":"Simple line check — current color from concept palette"},{"id":"phone","label":"Phone","type":"request","note":"Use simple line icon if needed in variations — not on approved master"},{"id":"calendar","label":"Calendar","type":"request","note":"Optional for scheduling-angle variations"},{"id":"insurance","label":"Insurance","type":"request","note":"Optional for benefit-card variations"},{"id":"billing","label":"Billing","type":"request","note":"Optional for benefit-card variations"}],"copyLocked":{"headline":{"lines":["HIRE A","VIRTUAL","MEDICAL","ADMIN"],"locked":true,"accentLine":1},"subhead":{"text":"Reception · insurance · scheduling · billing","locked":true},"benefits":{"items":["Reception & Admin Support","Insurance Verification","Appointment Scheduling","Billing Support"],"locked":true},"offer":{"text":"Starting at $10/hour","locked":"pending-claim","note":"Pending leadership approval — use only as shown on approved master"},"trust":{"text":"HIPAA Compliant","locked":"pending-claim","note":"Concept 04 — shield badge. HIPAA claim pending compliance confirmation before launch."},"brand":{"text":"MedVirtual","locked":true,"forbid":"MedVirtual.ai"}},"deliverablesStatic":[{"ratio":"1:1","dims":"1080×1080","filename":"MV_VMA_04_HIPAAGreen_1x1.png","required":true},{"ratio":"4:5","dims":"1080×1350","filename":"MV_VMA_04_HIPAAGreen_4x5.png","required":true},{"ratio":"9:16","dims":"1080×1920","filename":"MV_VMA_04_HIPAAGreen_9x16.png","required":true},{"ratio":"1.91:1","dims":"1200×628","filename":"MV_VMA_04_HIPAAGreen_1.91x1.png","required":true}],"deliverablesMotion":[{"id":"6s-4x5","label":"6-second motion · 4:5","dims":"1080×1350","duration":"6s","fps":30,"format":"MP4 H.264","filename":"MV_VMA_04_HIPAAGreen_6s_4x5.mp4","sound":"Works with sound off — captions optional","firstFrame":"Must read as a strong static ad"},{"id":"8s-9x16","label":"8-second motion · 9:16","dims":"1080×1920","duration":"8s","fps":30,"format":"MP4 H.264","filename":"MV_VMA_04_HIPAAGreen_8s_9x16.mp4","sound":"Sound-off first — subtle bed only if licensed","firstFrame":"Headline + person visible in frame 1"}],"motionBrief":{"principle":"Make the winning static move — not a new TV commercial.","duration":"6–10 seconds · test 6s first","opening":"Approved static composition visible from frame 0 — no logo-only or slow cinematic intro","sequence":[{"time":"0.0–0.5s","action":"Full static composition already on screen"},{"time":"0.2–1.0s","action":"Subtle person movement, crop push, or light parallax"},{"time":"0.3–1.2s","action":"Headline resolves immediately (no long type animation)"},{"time":"1.0–3.0s","action":"Benefit cards enter one at a time"},{"time":"3.0–5.5s","action":"Complete offer remains readable"},{"time":"Final 1–2s","action":"Price / CTA subtle emphasis · loop cleanly"}],"motionAllowed":["Slight push-in","Controlled parallax","Headline reveal","Benefit-card stagger","Badge emphasis","Soft background movement","Small glow changes"],"motionAvoid":["Logo-only openings","Slow cinematic setup","Waiting several seconds for the main idea","Animating everything just because it can move"],"independentLayers":["person","headline","benefit cards","offer badge","CTA","background","logo"],"export":["MP4 H.264","30fps","Editable AE / CapCut / Premiere source","First frame = strong static"]},"mondayRequest":{"formUrl":"https://forms.monday.com/forms/d03f1925ccfafd8f54a39d90a0e277d4?r=use1","fields":{"brand":"MedVirtual","type":"Ad Graphics","title":"VMA-04 HIPAA Green — 3–4 static variations + 1 animation","description":"Please pause all other open MedVirtual graphics requests (including any earlier VMA-01 / green-person tickets). This request replaces them.\n\nCreative direction: VMA-04 HIPAA Green — green-scrub Virtual Medical Admin with HIPAA Compliant badge and circular $10/hr offer. Match the approved 1:1 master exactly. Do not use the older VMA-01 Spanish Green layout unless explicitly briefed as a variation.\n\nPlease deliver:\n• 3–4 static variations of the green-person concept, each in Meta aspect ratios: 1:1 (1080×1080), 4:5 (1080×1350), 9:16 (1080×1920), and 1.91:1 (1200×628)\n• 1 short animated sequence (about 6 seconds) based on the winning static — make the static move; do not invent a new video concept\n\nProduction links:\n• Component Library (assets + copy): https://medvirtual-ad-content-doc.vercel.app/graphics-kit.html#04-4x5\n• Approved winner: https://medvirtual-ad-content-doc.vercel.app/vma-approved.html\n• Aspect ratios + filenames: https://medvirtual-ad-content-doc.vercel.app/vma-static.html\n• Motion brief: https://medvirtual-ad-content-doc.vercel.app/vma-video.html#green-motion\n\nBrand rules: MedVirtual logo only (never MedVirtual.ai) · no pink · rebuild each ratio (do not stretch the square) · deliver PNG + editable source (PSD / AI / Figma).","resolution":"Custom — see Static Production for exact pixels per ratio","dueDate":"Per sprint assignment","references":"https://medvirtual-ad-content-doc.vercel.app/graphics-kit.html#04-4x5"}},"conceptVariations":[{"id":"var-core","name":"Core winner","master":"04","status":"Winning Direction","note":"Approved 1:1 live reference — all new work matches this"},{"id":"var-spanish","name":"Spanish variation","master":"01","status":"Approved Variation","note":"Same green person — Spanish badge instead of HIPAA. Only when briefed."},{"id":"var-scroll-01","name":"Giant type (no people)","status":"Concept Review","thumb":"/assets/mockups/mock-01-giant-type.png","note":"Experimental — thumbs up/down on Concept Review page"},{"id":"var-scroll-02","name":"Split missed/handled","status":"Concept Review","thumb":"/assets/mockups/mock-02-split-missed-handled.png","note":"Experimental split-screen"},{"id":"var-scroll-03","name":"Split person","status":"Concept Review","thumb":"/assets/mockups/mock-03-split-person.png","note":"Person + bold type split"}],"pausedMasters":[{"number":"02","name":"Cobalt Blue"},{"number":"03","name":"Signal Yellow"}],"buildOrder":["04"],"variationOrder":["01"],"ratios":["4x5","9x16","1.91x1"],"ratioMeta":{"1x1":{"label":"1:1","dims":"1080×1080","w":1080,"h":1080,"layoutNote":"Headline huge on the left or top. Person on the right. Benefits easy to scan. Offer badge in an open corner."},"4x5":{"label":"4:5","dims":"1080×1350","w":1080,"h":1350,"layoutNote":"Keep the headline near the top. Give the person more vertical room. Put benefits lower. Keep the offer easy to see."},"9x16":{"label":"9:16","dims":"1080×1920","w":1080,"h":1920,"layoutNote":"Stack the ad: breathing room at top → headline → person in the middle → benefits → offer/CTA above the bottom controls."},"1.91x1":{"label":"1.91:1","dims":"1200×628","w":1200,"h":628,"layoutNote":"Put headline + benefits on the left. Put the person on the right. Keep the offer near the person. Fill the whole wide frame."}},"layouts":{"4x5":{"person":{"right":-20,"bottom":0,"width":580,"height":1280},"headline":{"left":56,"top":100,"width":520,"size":88,"lh":0.95},"subhead":{"left":58,"top":520,"width":480,"size":30},"benefits":{"left":56,"top":600,"width":480,"size":26,"gap":12},"price":{"left":56,"top":980,"size":64},"trust":{"left":56,"top":1100,"size":24},"logo":{"left":56,"top":48,"h":40}},"9x16":{"person":{"left":0,"right":0,"bottom":0,"height":1100},"headline":{"left":64,"top":200,"width":920,"size":120,"lh":0.94},"subhead":{"left":66,"top":720,"width":900,"size":34},"benefits":{"left":66,"top":800,"width":900,"size":28,"gap":14},"price":{"right":64,"top":200,"size":72},"trust":{"left":66,"top":1180,"size":28},"logo":{"left":64,"top":120,"h":44}},"1.91x1":{"person":{"right":-10,"bottom":0,"width":520,"height":628},"headline":{"left":48,"top":72,"width":560,"size":72,"lh":0.95},"subhead":{"left":50,"top":340,"width":520,"size":24},"benefits":{"left":50,"top":400,"width":520,"size":20,"gap":8},"price":{"right":48,"top":56,"size":52},"trust":{"left":50,"top":540,"size":20},"logo":{"left":48,"top":40,"h":36}}},"sharedAssets":[{"label":"Green person · brunette bun — winner (transparent PNG)","href":"/assets/graphics-kit/options/green-person-a-brunette-bun.png"},{"label":"Green person · brunette hair down (transparent PNG)","href":"/assets/graphics-kit/options/green-person-b-brunette-down.png"},{"label":"Green person · blonde (transparent PNG)","href":"/assets/graphics-kit/options/green-person-c-blonde.png"},{"label":"MedVirtual logo · white","href":"/assets/brand/medvirtual/logo-white.svg"},{"label":"MedVirtual logo · color","href":"/assets/brand/medvirtual/logo-colored.svg"}],"masters":[{"id":"vma-04","number":"04","name":"HIPAA Green","stem":"MV_VMA_04_HIPAAGreen","headline":"Hire a Virtual Medical Admin","headlineLines":["HIRE A","VIRTUAL","MEDICAL","ADMIN"],"subhead":"Reception · insurance · scheduling · billing — HIPAA compliant","theme":{"bg":"#0a0a0a","panel":"linear-gradient(160deg,#0a0a0a 0%,#0f1a0f 100%)","ink":"#ffffff","accent":"#4FB84F","accentAlt":"#22C55E","priceBg":"#4FB84F","priceInk":"#0a0a0a","chipBg":"rgba(255,255,255,0.95)","chipBorder":"#4FB84F","chipInk":"#0a0a0a","scrubColor":"#4FB84F"},"productionNote":"HIPAA badge only on this concept. Keep white benefit cards and circular price treatment.","productionStatus":"Winning Direction","isWinner":false,"square":{"status":"Approved","path":"/exports/vma-masters/MV_VMA_04_HIPAAGreen_SOURCE_1x1.png","expectedFilename":"MV_VMA_04_HIPAAGreen_1x1.png","layoutNote":"Headline huge on the left or top. Person on the right. Benefits easy to scan. Offer badge in an open corner."},"formats":{"1x1":{"status":"Approved","path":"/exports/vma-masters/MV_VMA_04_HIPAAGreen_SOURCE_1x1.png","expectedFilename":"MV_VMA_04_HIPAAGreen_1x1.png","layoutNote":"Headline huge on the left or top. Person on the right. Benefits easy to scan. Offer badge in an open corner."},"4x5":{"status":"Awaiting Design","path":null,"expectedFilename":"MV_VMA_04_HIPAAGreen_4x5.png","layoutNote":"Keep the headline near the top. Give the person more vertical room. Put benefits lower. Keep the offer easy to see."},"9x16":{"status":"Awaiting Design","path":null,"expectedFilename":"MV_VMA_04_HIPAAGreen_9x16.png","layoutNote":"Stack the ad: breathing room at top → headline → person in the middle → benefits → offer/CTA above the bottom controls."},"1.91x1":{"status":"Awaiting Design","path":null,"expectedFilename":"MV_VMA_04_HIPAAGreen_1.91x1.png","layoutNote":"Put headline + benefits on the left. Put the person on the right. Keep the offer near the person. Fill the whole wide frame."}},"components":[{"id":"person","label":"Person (transparent PNG)","type":"person","src":"/assets/graphics-kit/options/green-person-a-brunette-bun.png","refSrc":"/assets/graphics-kit/person-04.png","scrubColor":"#4FB84F","options":[{"id":"a","label":"Brunette · bun (matches winner)","href":"/assets/graphics-kit/options/green-person-a-brunette-bun.png"},{"id":"b","label":"Brunette · hair down","href":"/assets/graphics-kit/options/green-person-b-brunette-down.png"},{"id":"c","label":"Blonde · hair down","href":"/assets/graphics-kit/options/green-person-c-blonde.png"}],"hint":"Default person matches the approved master. Two alternates (hair down, blonde) are also available in Shared files.","specs":["PNG with transparent background — drag onto any layout","Scrub color: #4FB84F — use hue/saturation or color overlay in Photoshop / Illustrator / Figma","Keep skin tones natural when recoloring scrubs only","Reposition and scale per ratio — never stretch","Person options: Brunette · bun (matches winner) · Brunette · hair down · Blonde · hair down"]},{"id":"scrubs","label":"Scrub color","type":"scrub","scrubColor":"#4FB84F","hint":"Apply this color to the transparent person layer — not baked into the PNG."},{"id":"headline","label":"Headline","type":"text","lines":["HIRE A","VIRTUAL","MEDICAL","ADMIN"],"accentLine":1,"hint":"Set in Be Vietnam Pro Black. Accent color on line 2 (VIRTUAL).","specs":["All caps","Mobile-readable — scale per ratio mock","Spell exactly — no extra words"]},{"id":"subhead","label":"Sub-line","type":"text","text":"Reception · insurance · scheduling · billing — HIPAA compliant","hint":"One short support line under the headline."},{"id":"benefits","label":"Benefits (4 chips)","type":"list","items":["Reception & Admin Support","Insurance Verification","Appointment Scheduling","Billing Support"],"hint":"Stack or grid depending on layout. Keep icons simple line style."},{"id":"offer","label":"Price badge","type":"text","text":"Starting at $10/hour","hint":"Only if printed on the approved master. Do not invent new pricing.","specs":["Claim: Starting at $10/hour"]},{"id":"trust","label":"HIPAA badge","type":"text","text":"HIPAA Compliant badge · English","hint":"Concept 04 only — HIPAA badge."},{"id":"logo","label":"MedVirtual logo","type":"image","src":"/assets/brand/medvirtual/logo-white.svg","srcAlt":"/assets/brand/medvirtual/logo-colored.svg","hint":"MedVirtual only — never MedVirtual.ai"},{"id":"colors","label":"Color palette","type":"colors","swatches":[{"name":"Scrub color","hex":"#4FB84F"},{"name":"Accent","hex":"#4FB84F"},{"name":"Accent alt","hex":"#22C55E"},{"name":"Background","hex":"#0a0a0a"},{"name":"Price badge","hex":"#4FB84F"}],"hint":"Transparent components + these hex values — swap colors without regenerating photos. No pink."}]},{"id":"vma-01","number":"01","name":"Spanish Green","stem":"MV_VMA_01_SpanishGreen","headline":"Hire a Virtual Medical Admin","headlineLines":["HIRE A","VIRTUAL","MEDICAL","ADMIN"],"subhead":"Reception · insurance · preauth · billing — Spanish available","theme":{"bg":"#0a1628","panel":"linear-gradient(135deg,#0a1628 0%,#0d2840 100%)","ink":"#ffffff","accent":"#B8F000","accentAlt":"#00E5FF","priceBg":"#00B2E2","chipBg":"rgba(255,255,255,0.1)","chipBorder":"#B8F000","scrubColor":"#4FB84F"},"productionNote":"Spanish / flag treatment only on this concept. Preserve badge and benefit labels exactly.","productionStatus":"Approved Variation","isWinner":true,"square":{"status":"Approved","path":"/exports/vma-masters/MV_VMA_01_SpanishGreen_SOURCE_1x1.png","expectedFilename":"MV_VMA_01_SpanishGreen_1x1.png","layoutNote":"Headline huge on the left or top. Person on the right. Benefits easy to scan. Offer badge in an open corner."},"formats":{"1x1":{"status":"Approved","path":"/exports/vma-masters/MV_VMA_01_SpanishGreen_SOURCE_1x1.png","expectedFilename":"MV_VMA_01_SpanishGreen_1x1.png","layoutNote":"Headline huge on the left or top. Person on the right. Benefits easy to scan. Offer badge in an open corner."},"4x5":{"status":"Awaiting Design","path":null,"expectedFilename":"MV_VMA_01_SpanishGreen_4x5.png","layoutNote":"Keep the headline near the top. Give the person more vertical room. Put benefits lower. Keep the offer easy to see."},"9x16":{"status":"Awaiting Design","path":null,"expectedFilename":"MV_VMA_01_SpanishGreen_9x16.png","layoutNote":"Stack the ad: breathing room at top → headline → person in the middle → benefits → offer/CTA above the bottom controls."},"1.91x1":{"status":"Awaiting Design","path":null,"expectedFilename":"MV_VMA_01_SpanishGreen_1.91x1.png","layoutNote":"Put headline + benefits on the left. Put the person on the right. Keep the offer near the person. Fill the whole wide frame."}},"components":[{"id":"person","label":"Person (transparent PNG)","type":"person","src":"/assets/graphics-kit/options/green-person-a-brunette-bun.png","refSrc":"/assets/graphics-kit/person-01.png","scrubColor":"#4FB84F","options":[],"hint":"Transparent cutout — change scrub color without redoing the photo. Match pose/lighting to the reference crop.","specs":["PNG with transparent background — drag onto any layout","Scrub color: #4FB84F — use hue/saturation or color overlay in Photoshop / Illustrator / Figma","Keep skin tones natural when recoloring scrubs only","Reposition and scale per ratio — never stretch"]},{"id":"scrubs","label":"Scrub color","type":"scrub","scrubColor":"#4FB84F","hint":"Apply this color to the transparent person layer — not baked into the PNG."},{"id":"headline","label":"Headline","type":"text","lines":["HIRE A","VIRTUAL","MEDICAL","ADMIN"],"accentLine":1,"hint":"Set in Be Vietnam Pro Black. Accent color on line 2 (VIRTUAL).","specs":["All caps","Mobile-readable — scale per ratio mock","Spell exactly — no extra words"]},{"id":"subhead","label":"Sub-line","type":"text","text":"Reception · insurance · preauth · billing — Spanish available","hint":"One short support line under the headline."},{"id":"benefits","label":"Benefits (4 chips)","type":"list","items":["Reception & Admin Support","Insurance Verification","Preauthorization Support","Medical Billing Support"],"hint":"Stack or grid depending on layout. Keep icons simple line style."},{"id":"offer","label":"Price badge","type":"text","text":"Starting at $10/hour","hint":"Only if printed on the approved master. Do not invent new pricing.","specs":["Claim: Starting at $10/hour"]},{"id":"trust","label":"Spanish badge","type":"text","text":"Spanish Speaking Available · Mexican flag badge","hint":"Concept 01 only — Spanish / flag treatment."},{"id":"logo","label":"MedVirtual logo","type":"image","src":"/assets/brand/medvirtual/logo-white.svg","srcAlt":"/assets/brand/medvirtual/logo-colored.svg","hint":"MedVirtual only — never MedVirtual.ai"},{"id":"colors","label":"Color palette","type":"colors","swatches":[{"name":"Scrub color","hex":"#4FB84F"},{"name":"Accent","hex":"#B8F000"},{"name":"Accent alt","hex":"#00E5FF"},{"name":"Background","hex":"#0a1628"},{"name":"Price badge","hex":"#00B2E2"}],"hint":"Transparent components + these hex values — swap colors without regenerating photos. No pink."}]}]}</script>
+    <script>
+    (function () {
+      const DATA = JSON.parse(document.getElementById('kitData').textContent);
+      const workspace = document.getElementById('kitWorkspace');
+      const masterSelect = document.getElementById('masterSelect');
+      const ratioSelect = document.getElementById('ratioSelect');
+      const modal = document.getElementById('inspectModal');
+
+      DATA.masters.forEach((m) => {
+        const opt = document.createElement('option');
+        opt.value = m.number;
+        opt.textContent = 'VMA-' + m.number + ' · ' + m.name;
+        masterSelect.appendChild(opt);
+      });
+      DATA.ratios.forEach((r) => {
+        const opt = document.createElement('option');
+        opt.value = r;
+        opt.textContent = DATA.ratioMeta[r].label + ' · ' + DATA.ratioMeta[r].dims;
+        ratioSelect.appendChild(opt);
+      });
+      masterSelect.value = DATA.buildOrder[0] || '04';
+      ratioSelect.value = '4x5';
+
+      const quickstart = document.getElementById('quickstartLinks');
+      quickstart.innerHTML = DATA.buildOrder.map((n) =>
+        '<a href="#' + n + '-4x5" class="kit-jump">VMA-' + n + ' · 4:5</a>'
+      ).join('');
+
+      const assetList = document.getElementById('sharedAssetList');
+      const logos = (DATA.logoAssets || []);
+      const shared = (DATA.sharedAssets || []);
+      assetList.innerHTML = [...logos, ...shared.filter((a) => !logos.find((l) => l.href === a.href))]
+        .map((a) => '<li><a href="' + a.href + '" target="_blank" rel="noopener">' + a.label + '</a></li>').join('');
+
+      const delPanel = document.getElementById('deliverablesPanel');
+      if (delPanel) {
+        const staticHtml = (DATA.deliverablesStatic || []).map((d) =>
+          '<div class="kit-del"><strong>' + d.ratio + '</strong><code>' + d.filename + '</code><span>' + d.dims + '</span></div>'
+        ).join('');
+        const motionHtml = (DATA.deliverablesMotion || []).map((d) =>
+          '<div class="kit-del"><strong>' + d.label + '</strong><code>' + d.filename + '</code><span>' + d.dims + ' · ' + d.duration + '</span></div>'
+        ).join('');
+        delPanel.innerHTML = '<div><h3>Static PNGs</h3>' + staticHtml + '</div><div><h3>Motion MP4s</h3>' + motionHtml + '</div>';
+      }
+
+      function master() { return DATA.masters.find((m) => m.number === masterSelect.value); }
+      function ratio() { return ratioSelect.value; }
+
+      function benefitIcon() {
+        return '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 13l4 4L19 7"/></svg>';
+      }
+
+      function renderMock(m, r, meta) {
+        const t = m.theme;
+        const L = DATA.layouts[r];
+        const rm = DATA.ratioMeta[r];
+        if (!L) return '';
+        const hl = m.headlineLines.map((line, i) =>
+          '<div style="color:' + (i === 1 ? t.accent : t.ink) + '">' + line + '</div>'
+        ).join('');
+        const chips = m.components.find((c) => c.id === 'benefits');
+        const items = chips ? chips.items : [];
+        const chipHtml = items.map((item) =>
+          '<div class="mock-chip" style="background:' + (t.chipBg || 'rgba(255,255,255,0.1)') + ';border-color:' + t.chipBorder + ';color:' + (t.chipInk || t.ink) + '">' + benefitIcon() + '<span>' + item + '</span></div>'
+        ).join('');
+        const price = m.components.find((c) => c.id === 'offer');
+        const trust = m.components.find((c) => c.id === 'trust');
+        const person = m.components.find((c) => c.id === 'person');
+        const p = L.person;
+        const personBox = Object.entries(p).map(([k,v]) => k + ':' + (typeof v === 'number' ? v + 'px' : v)).join(';');
+        const personSrc = person ? person.src : '';
+        return '<div class="mock-stage" style="width:' + rm.w + 'px;height:' + rm.h + 'px;background:' + t.bg + '">' +
+          '<div class="mock-panel" style="background:' + t.panel + '"></div>' +
+          (person ? '<img class="mock-person mock-person--transparent" src="' + personSrc + '" style="' + personBox + '" alt="Person layer (transparent)" />' : '') +
+          '<img class="mock-logo" src="/assets/brand/medvirtual/logo-white.svg" style="left:' + L.logo.left + 'px;top:' + L.logo.top + 'px;height:' + L.logo.h + 'px" alt="" />' +
+          '<div class="mock-headline" style="left:' + L.headline.left + 'px;top:' + L.headline.top + 'px;width:' + L.headline.width + 'px;font-size:' + L.headline.size + 'px;line-height:' + L.headline.lh + '">' + hl + '</div>' +
+          '<div class="mock-sub" style="left:' + L.subhead.left + 'px;top:' + L.subhead.top + 'px;width:' + L.subhead.width + 'px;font-size:' + L.subhead.size + 'px;color:' + t.ink + '99">' + m.subhead + '</div>' +
+          '<div class="mock-benefits" style="left:' + L.benefits.left + 'px;top:' + L.benefits.top + 'px;width:' + L.benefits.width + 'px;font-size:' + L.benefits.size + 'px;gap:' + L.benefits.gap + 'px">' + chipHtml + '</div>' +
+          (price ? '<div class="mock-price" style="' + (L.price.right != null ? 'right:' + L.price.right + 'px' : 'left:' + L.price.left + 'px') + ';top:' + L.price.top + 'px;font-size:' + L.price.size + 'px;background:' + t.priceBg + ';color:' + (t.priceInk || '#fff') + '">' + price.text + '</div>' : '') +
+          (trust ? '<div class="mock-trust" style="left:' + L.trust.left + 'px;top:' + L.trust.top + 'px;font-size:' + L.trust.size + 'px;border-color:' + t.accent + '">' + trust.text + '</div>' : '') +
+        '</div>';
+      }
+
+      function componentTile(c) {
+        let thumb = '';
+        if (c.type === 'person') {
+          thumb = '<div class="thumb-checker"><img src="' + c.src + '" alt="" loading="lazy" /></div>';
+        } else if (c.type === 'scrub') {
+          thumb = '<div class="thumb-scrub" style="background:' + c.scrubColor + '"><span>Scrub</span></div>';
+        } else if (c.type === 'image') thumb = '<img src="' + c.src + '" alt="" loading="lazy" />';
+        else if (c.type === 'colors') thumb = '<div class="swatch-row">' + c.swatches.map((s) => '<span style="background:' + s.hex + '" title="' + s.name + '"></span>').join('') + '</div>';
+        else if (c.type === 'list') thumb = '<ul class="mini-list">' + c.items.slice(0, 2).map((i) => '<li>' + i + '</li>').join('') + '<li>…</li></ul>';
+        else thumb = '<div class="mini-text">' + (c.lines ? c.lines.join(' ') : c.text || '') + '</div>';
+        return '<button type="button" class="comp-tile" data-comp="' + c.id + '">' +
+          '<div class="comp-tile__thumb">' + thumb + '</div>' +
+          '<strong>' + c.label + '</strong>' +
+          '<span>Click to inspect</span></button>';
+      }
+
+      function render() {
+        const m = master();
+        const r = ratio();
+        const meta = DATA.ratioMeta[r];
+        const fmt = m.formats[r];
+        const square = m.formats['1x1'];
+        const scaler = Math.min(1, (workspace.clientWidth - 40) / meta.w, 520 / meta.h);
+
+        workspace.innerHTML =
+          '<section class="kit-master" id="master-' + m.number + '">' +
+            '<div class="kit-master__head"><h2>VMA-' + m.number + ' · ' + m.name + (m.isWinner ? ' <span class="tag tag-live">WINNING DIRECTION</span>' : '') + '</h2>' +
+            '<p class="note">' + m.productionNote + '</p></div>' +
+
+            '<div class="kit-square-ref">' +
+              '<div><span class="tag tag-live">1:1 · LIVE ON META</span><h3>Approved square — your reference</h3>' +
+              '<p>Match this energy. Open full size to see every detail.</p>' +
+              '<button type="button" class="btn-link inspect-img" data-src="' + square.path + '">Inspect square master</button></div>' +
+              '<button type="button" class="square-btn inspect-img" data-src="' + square.path + '">' +
+              '<img src="' + square.path + '" alt="Approved 1:1" loading="lazy" /></button></div>' +
+
+            '<div class="kit-job" id="' + m.number + '-' + r + '">' +
+              '<div class="kit-job__head"><h3>Build: ' + meta.label + ' <span>' + meta.dims + '</span></h3>' +
+              '<p>' + meta.layoutNote + '</p>' +
+              '<p>Filename: <code>' + fmt.expectedFilename + '</code> · Status: <b>' + fmt.status + '</b></p></div>' +
+
+              '<div class="kit-split">' +
+                '<div class="kit-pieces"><h4>Pieces of the puzzle</h4><p class="note">Click any piece — inspect before you download.</p>' +
+                  '<div class="comp-grid">' + m.components.map(componentTile).join('') + '</div></div>' +
+
+                '<div class="kit-target"><h4>Layout mock (composition reference only)</h4>' +
+                  '<p class="note">Rebuild in your production software — not a final export from this page.</p>' +
+                  '<div class="mock-scaler" style="transform:scale(' + scaler + ');width:' + (meta.w * scaler) + 'px;height:' + (meta.h * scaler) + 'px">' +
+                    renderMock(m, r, meta) + '</div>' +
+                  '<h4 style="margin-top:1.25rem">AI draft reference</h4>' +
+                  '<p class="note">Draft only — check spelling, hands, safe zones. You rebuild properly using components above.</p>' +
+                  (fmt.path
+                    ? '<button type="button" class="draft-btn inspect-img" data-src="' + fmt.path + '"><img src="' + fmt.path + '" alt="AI draft ' + meta.label + '" loading="lazy" /><span>Click to inspect draft</span></button>'
+                    : '<div class="awaiting">Awaiting design — use components + mock to build this size.</div>') +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</section>';
+
+        workspace.querySelectorAll('.comp-tile').forEach((btn) => {
+          btn.addEventListener('click', () => openComponent(m.components.find((c) => c.id === btn.getAttribute('data-comp'))));
+        });
+        workspace.querySelectorAll('.inspect-img').forEach((btn) => {
+          btn.addEventListener('click', () => openImage(btn.getAttribute('data-src'), 'Full image'));
+        });
+        workspace.querySelectorAll('.kit-jump').forEach((a) => {
+          a.addEventListener('click', (e) => {
+            const id = a.getAttribute('href').replace('#', '');
+            const parts = id.split('-');
+            masterSelect.value = parts[0];
+            ratioSelect.value = parts.slice(1).join('-');
+            render();
+            e.preventDefault();
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        });
+      }
+
+      function openImage(src, title) {
+        document.getElementById('inspectTitle').textContent = title;
+        document.getElementById('inspectHint').textContent = 'Pinch-zoom on mobile · right-click save if you need the file';
+        document.getElementById('inspectPreview').innerHTML = '<img src="' + src + '" alt="" />';
+        document.getElementById('inspectSpecs').innerHTML = '';
+        document.getElementById('inspectActions').innerHTML = '<a href="' + src + '" target="_blank" rel="noopener">Open in new tab</a>';
+        modal.hidden = false;
+      }
+
+      function openComponent(c) {
+        if (!c) return;
+        document.getElementById('inspectTitle').textContent = c.label;
+        document.getElementById('inspectHint').textContent = c.hint || '';
+        const prev = document.getElementById('inspectPreview');
+        const specs = document.getElementById('inspectSpecs');
+        const actions = document.getElementById('inspectActions');
+        specs.innerHTML = (c.specs || []).map((s) => '<li>' + s + '</li>').join('');
+        if (c.type === 'person') {
+          const optionsHtml = (c.options || []).length
+            ? '<div class="inspect-options"><p><b>Person options</b> — default matches approved master; alternates for variations:</p><ul>' +
+              c.options.map((o) => '<li><a href="' + o.href + '" target="_blank" rel="noopener">' + o.label + '</a></li>').join('') +
+              '</ul></div>'
+            : '';
+          prev.innerHTML = '<div class="inspect-dual">' +
+            '<div><small>Transparent PNG (use this)</small><div class="thumb-checker inspect-checker"><img src="' + c.src + '" alt="" /></div></div>' +
+            '<div><small>Reference crop from live 1:1</small><img src="' + c.refSrc + '" alt="" /></div>' +
+            '</div>' + optionsHtml;
+          const optionLinks = (c.options || []).map((o) =>
+            '<a href="' + o.href + '" target="_blank" rel="noopener">' + o.label + '</a>'
+          ).join(' ');
+          actions.innerHTML = '<a href="' + c.src + '" target="_blank" rel="noopener">Open default PNG</a> ' +
+            '<a href="' + c.refSrc + '" target="_blank" rel="noopener">Open reference crop</a>' +
+            (optionLinks ? ' ' + optionLinks : '');
+        } else if (c.type === 'scrub') {
+          prev.innerHTML = '<div class="swatch-grid"><div><span style="background:' + c.scrubColor + '"></span><strong>Scrub color</strong><code>' + c.scrubColor + '</code></div></div>' +
+            '<p class="inspect-hint">Apply to the transparent person layer — hue/saturation or color overlay. Do not bake into a flat export unless final.</p>';
+          actions.innerHTML = '';
+        } else if (c.type === 'image') {
+          prev.innerHTML = '<img src="' + c.src + '" alt="" />';
+          actions.innerHTML = '<a href="' + c.src + '" target="_blank" rel="noopener">Open image in new tab</a>';
+        } else if (c.type === 'colors') {
+          prev.innerHTML = '<div class="swatch-grid">' + c.swatches.map((s) =>
+            '<div><span style="background:' + s.hex + '"></span><strong>' + s.name + '</strong><code>' + s.hex + '</code></div>'
+          ).join('') + '</div>';
+          actions.innerHTML = '';
+        } else if (c.type === 'list') {
+          prev.innerHTML = '<ul class="inspect-list">' + c.items.map((i) => '<li>' + i + '</li>').join('') + '</ul>';
+          actions.innerHTML = '<button type="button" class="copy-btn" data-copy="' + c.items.join('\n') + '">Copy all lines</button>';
+        } else if (c.lines) {
+          prev.innerHTML = '<div class="inspect-lines">' + c.lines.map((l, i) =>
+            '<div><small>Line ' + (i+1) + (i === c.accentLine ? ' (accent)' : '') + '</small><strong>' + l + '</strong></div>'
+          ).join('') + '</div>';
+          actions.innerHTML = '<button type="button" class="copy-btn" data-copy="' + c.lines.join('\n') + '">Copy headline</button>';
+        } else {
+          prev.innerHTML = '<p class="inspect-text">' + (c.text || '') + '</p>';
+          actions.innerHTML = '<button type="button" class="copy-btn" data-copy="' + (c.text || '') + '">Copy text</button>';
+        }
+        actions.querySelectorAll('.copy-btn').forEach((b) => {
+          b.addEventListener('click', () => {
+            navigator.clipboard.writeText(b.getAttribute('data-copy'));
+            b.textContent = 'Copied!';
+          });
+        });
+        modal.hidden = false;
+      }
+
+      modal.querySelectorAll('[data-close]').forEach((el) => {
+        el.addEventListener('click', () => { modal.hidden = true; });
+      });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.hidden = true; });
+
+      masterSelect.addEventListener('change', render);
+      ratioSelect.addEventListener('change', render);
+      window.addEventListener('resize', render);
+      const hash = location.hash.replace('#', '');
+      if (hash) {
+        const parts = hash.split('-');
+        const num = parts[0];
+        const rat = parts.slice(1).join('-');
+        if (DATA.masters.find((x) => x.number === num)) masterSelect.value = num;
+        if (DATA.ratioMeta[rat]) ratioSelect.value = rat;
+      }
+      render();
+    })();
+    </script></main>
+</body>
+</html>

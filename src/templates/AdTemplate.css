@@ -1,0 +1,397 @@
+/* Base canvas */
+.ad-preview {
+  position: relative;
+  overflow: hidden;
+  background: #f8fafc;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  flex-shrink: 0;
+  color: #0f172a;
+}
+
+.ad-preview--vertical {
+  width: 1080px;
+  height: 1350px;
+}
+
+.ad-preview--square {
+  width: 1080px;
+  height: 1080px;
+}
+
+.ad-preview--story {
+  width: 1080px;
+  height: 1920px;
+}
+
+/* Background image — no heavy overlay */
+.ad-preview__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+}
+
+.ad-preview__bg--clear {
+  filter: contrast(1.04) saturate(1.02);
+}
+
+.ad-preview__image-pane {
+  background-size: cover;
+  background-position: center top;
+  filter: contrast(1.04) saturate(1.02);
+}
+
+/* ——— Template A: Split ——— */
+.ad-preview--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ad-preview--split-left .ad-preview__image-pane {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.ad-preview--split-left .ad-preview__copy-pane {
+  grid-column: 2;
+}
+
+.ad-preview--split-right {
+  grid-template-columns: 1fr 1fr;
+}
+
+.ad-preview--split-right .ad-preview__image-pane {
+  grid-column: 2;
+}
+
+.ad-preview--split-right .ad-preview__copy-pane {
+  grid-column: 1;
+}
+
+.ad-preview__copy-pane {
+  display: flex;
+  align-items: center;
+  padding: 48px 44px;
+  background: #ffffff;
+}
+
+.ad-preview--square .ad-preview__copy-pane {
+  padding: 40px 36px;
+}
+
+/* ——— Copy block (split / rail) ——— */
+.ad-copy {
+  width: 100%;
+}
+
+.ad-copy__logo {
+  margin-bottom: 28px;
+}
+
+.ad-copy__hook {
+  margin: 0 0 16px;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.08;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.ad-preview--square .ad-copy__hook {
+  font-size: 38px;
+}
+
+.ad-copy__support {
+  margin: 0 0 20px;
+  font-size: 26px;
+  line-height: 1.35;
+  color: #475569;
+  font-weight: 500;
+}
+
+.ad-copy__bullets {
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ad-copy__bullets li {
+  position: relative;
+  padding-left: 32px;
+  font-size: 26px;
+  line-height: 1.35;
+  color: #334155;
+  font-weight: 500;
+}
+
+.ad-preview--square .ad-copy__bullets li {
+  font-size: 22px;
+  padding-left: 28px;
+}
+
+.ad-copy__bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #0d9488;
+}
+
+.ad-copy__cta {
+  display: inline-block;
+  background: #0d9488;
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  padding: 20px 40px;
+  border-radius: 10px;
+  letter-spacing: 0.01em;
+}
+
+.ad-preview--square .ad-copy__cta {
+  font-size: 22px;
+  padding: 16px 32px;
+}
+
+/* ——— Template D: Side rail ——— */
+.ad-preview--side-rail .ad-preview__rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 46%;
+  padding: 48px 40px;
+  background: rgba(255, 255, 255, 0.97);
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 40px rgba(15, 23, 42, 0.08);
+}
+
+.ad-preview--rail-left .ad-preview__rail {
+  left: 0;
+}
+
+.ad-preview--rail-right .ad-preview__rail {
+  right: 0;
+}
+
+.ad-preview--square .ad-preview__rail {
+  padding: 36px 32px;
+}
+
+/* ——— Template B: Bottom band ——— */
+.ad-preview--bottom-band .ad-preview__band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 30%;
+  min-height: 280px;
+  padding: 36px 48px 48px;
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0.92) 0%,
+    rgba(15, 23, 42, 0.88) 100%
+  );
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.ad-band__hook {
+  margin: 12px 0 0;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.ad-band__bullets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+.ad-band__bullets li {
+  font-size: 24px;
+  font-weight: 500;
+  padding-left: 20px;
+  position: relative;
+}
+
+.ad-band__bullets li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #2dd4bf;
+}
+
+.ad-band__cta {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+/* ——— Template C: Top hook ——— */
+.ad-preview--top-hook .ad-preview__top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 48px 48px 32px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.85) 70%,
+    transparent 100%
+  );
+}
+
+.ad-top__hook {
+  margin: 20px 0 0;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1.08;
+  color: #0f172a;
+  max-width: 85%;
+}
+
+.ad-preview__bottom-cta {
+  position: absolute;
+  left: 48px;
+  right: 48px;
+  bottom: 48px;
+  padding: 28px 32px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+}
+
+.ad-top__bullets {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ad-top__bullets li {
+  font-size: 24px;
+  padding-left: 28px;
+  position: relative;
+  color: #334155;
+}
+
+.ad-top__bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0d9488;
+}
+
+/* ——— Template E: Comparison ——— */
+.ad-preview--comparison {
+  background: linear-gradient(160deg, #f8fafc 0%, #e2e8f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 48px;
+}
+
+.ad-comparison {
+  width: 100%;
+  max-width: 960px;
+}
+
+.ad-comparison__logo {
+  margin-bottom: 32px;
+}
+
+.ad-comparison__hook {
+  margin: 0 0 12px;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.08;
+  color: #0f172a;
+}
+
+.ad-comparison__support {
+  margin: 0 0 36px;
+  font-size: 28px;
+  color: #475569;
+}
+
+.ad-comparison__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.ad-comparison__col {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid #e2e8f0;
+}
+
+.ad-comparison__col--mv {
+  border-color: #0d9488;
+  border-width: 2px;
+}
+
+.ad-comparison__label {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  margin-bottom: 16px;
+}
+
+.ad-comparison__col--mv .ad-comparison__label {
+  color: #0d9488;
+}
+
+.ad-comparison__col ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ad-comparison__col li {
+  font-size: 26px;
+  line-height: 1.4;
+  padding: 8px 0;
+  color: #334155;
+}
+
+.ad-comparison__cta {
+  display: inline-block;
+}
+
+/* Scaler */
+.ad-preview-scaler {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.ad-preview-scaler__inner {
+  transform-origin: top center;
+}

@@ -1,0 +1,603 @@
+.af-app,
+.af-login {
+  --af-ink: #161511;
+  --af-muted: #516472;
+  --af-line: #d5e2ea;
+  --af-panel: #ffffff;
+  --af-teal: #077999;
+  --af-cyan: #00b2e2;
+  --af-deep: #0d546b;
+  --af-bg: #eef3f7;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.25rem 1.1rem 4rem;
+  color: var(--af-ink);
+  font-family: 'Be Vietnam', Inter, system-ui, sans-serif;
+}
+
+.af-loading {
+  padding: 3rem;
+  text-align: center;
+  color: var(--af-muted);
+}
+
+.af-login {
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+}
+
+.af-login-card {
+  width: min(420px, 100%);
+  background: var(--af-panel);
+  border: 1px solid var(--af-line);
+  border-radius: 16px;
+  padding: 1.4rem 1.35rem 1.5rem;
+  box-shadow: 0 18px 40px rgba(13, 84, 107, 0.08);
+}
+
+.af-login-card h1,
+.af-toolbar h1 {
+  margin: 0.15rem 0 0.35rem;
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  letter-spacing: -0.03em;
+}
+
+.af-eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--af-teal);
+  font-weight: 700;
+}
+
+.af-lede {
+  margin: 0 0 1rem;
+  color: var(--af-muted);
+  max-width: 40rem;
+  line-height: 1.45;
+}
+
+.af-login-card label,
+.af-field {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.af-login-card input,
+.af-login-card select,
+.af-field input,
+.af-field select,
+.af-field textarea,
+.af-modal input,
+.af-modal textarea,
+.af-inline select {
+  font: inherit;
+  font-weight: 400;
+  border: 1px solid var(--af-line);
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+  background: #fff;
+  color: var(--af-ink);
+}
+
+.af-field textarea,
+.af-modal textarea,
+.af-prompt-box textarea {
+  resize: vertical;
+  width: 100%;
+  line-height: 1.4;
+}
+
+.af-btn,
+.af-actions button,
+.af-presets button,
+.af-tags button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 999px;
+  border: 1px solid var(--af-line);
+  background: #fff;
+  color: var(--af-ink);
+  padding: 0.45rem 0.85rem;
+}
+
+.af-btn:focus-visible,
+.af-actions button:focus-visible,
+.af-tabs button:focus-visible,
+.af-presets button:focus-visible,
+.af-tags button:focus-visible {
+  outline: 2px solid var(--af-cyan);
+  outline-offset: 2px;
+}
+
+.af-btn-primary {
+  background: var(--af-deep);
+  border-color: var(--af-deep);
+  color: #fff;
+}
+
+.af-btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.af-btn-xl {
+  padding: 0.75rem 1.35rem;
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+
+.af-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.af-toolbar-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.af-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.af-budget {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--af-muted);
+}
+
+.af-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--af-line);
+  padding-bottom: 0.55rem;
+}
+
+.af-tabs button {
+  border: none;
+  background: transparent;
+  padding: 0.55rem 0.8rem;
+  border-radius: 10px;
+  color: var(--af-muted);
+  font-weight: 600;
+}
+
+.af-tabs button.active {
+  background: rgba(7, 121, 153, 0.12);
+  color: var(--af-deep);
+}
+
+.af-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.35rem;
+  border-radius: 999px;
+  background: var(--af-cyan);
+  color: #003445;
+  font-size: 0.7rem;
+}
+
+.af-panel {
+  background: var(--af-panel);
+  border: 1px solid var(--af-line);
+  border-radius: 16px;
+  padding: 1rem 1rem 1.25rem;
+}
+
+.af-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.af-presets button {
+  font-size: 0.82rem;
+}
+
+.af-grid-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .af-grid-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .af-grid-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.af-guardrails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.85rem;
+  align-items: baseline;
+  margin: 0.85rem 0;
+  padding: 0.65rem 0.8rem;
+  border-radius: 12px;
+  background: #f3f8fb;
+  color: var(--af-muted);
+  font-size: 0.86rem;
+}
+
+.af-prompt-box {
+  margin: 0.85rem 0 1rem;
+}
+
+.af-prompt-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.af-est {
+  font-size: 0.86rem;
+  color: var(--af-muted);
+}
+
+.af-primary-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.af-warn {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+  border-radius: 12px;
+  padding: 0.7rem 0.85rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.9rem;
+}
+
+.af-error {
+  color: #b42318;
+  font-weight: 600;
+}
+
+.af-fine {
+  font-size: 0.8rem;
+  color: var(--af-muted);
+}
+
+.af-consent {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.af-consent label {
+  font-weight: 500;
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.af-review-grid,
+.af-lib-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.af-card,
+.af-lib-card {
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) 1fr;
+  gap: 1rem;
+  border: 1px solid var(--af-line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fbfdfe;
+}
+
+@media (max-width: 720px) {
+  .af-card,
+  .af-lib-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+.af-card-media {
+  background: #dfe8ee;
+  overflow: hidden;
+}
+
+.af-card-media img,
+.af-lib-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.af-lib-card img {
+  aspect-ratio: 4 / 5;
+  max-height: 260px;
+}
+
+.af-card-body {
+  padding: 0.85rem 0.85rem 1rem 0;
+}
+
+.af-status {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--af-deep);
+  background: rgba(0, 178, 226, 0.15);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+
+.af-card h3 {
+  margin: 0.4rem 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.af-meta {
+  margin: 0.15rem 0;
+  font-size: 0.8rem;
+  color: var(--af-muted);
+}
+
+.af-card details {
+  margin: 0.55rem 0;
+}
+
+.af-card pre {
+  white-space: pre-wrap;
+  font-size: 0.72rem;
+  max-height: 180px;
+  overflow: auto;
+  background: #f3f7fa;
+  padding: 0.55rem;
+  border-radius: 8px;
+}
+
+.af-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+}
+
+.af-actions .af-approve {
+  background: var(--af-teal);
+  border-color: var(--af-teal);
+  color: #fff;
+}
+
+.af-actions .af-danger {
+  color: #b42318;
+}
+
+.af-empty {
+  color: var(--af-muted);
+  padding: 1.5rem 0.25rem;
+}
+
+.af-taste-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 800px) {
+  .af-taste-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.af-taste-col {
+  background: #f7fafc;
+  border-radius: 12px;
+  padding: 0.85rem;
+}
+
+.af-taste-col h3 {
+  margin: 0 0 0.55rem;
+  text-transform: capitalize;
+}
+
+.af-taste-col h4 {
+  margin: 0.65rem 0 0.25rem;
+  font-size: 0.8rem;
+  color: var(--af-muted);
+}
+
+.af-taste-col ul,
+.af-diff ul,
+.af-ref-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.88rem;
+}
+
+.af-muted {
+  color: var(--af-muted);
+}
+
+.af-progress {
+  background: rgba(7, 121, 153, 0.12);
+  border: 1px solid #b6d5e0;
+  color: var(--af-deep);
+  border-radius: 12px;
+  padding: 0.65rem 0.85rem;
+  margin-bottom: 0.85rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.af-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--af-deep);
+  background: rgba(0, 178, 226, 0.18);
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+}
+
+.af-img-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  background: linear-gradient(120deg, #dfe8ee, #f4f8fb);
+}
+
+.af-lib-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.af-lib-toolbar select {
+  font: inherit;
+  border: 1px solid var(--af-line);
+  border-radius: 10px;
+  padding: 0.45rem 0.6rem;
+}
+
+.af-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 84, 107, 0.35);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.af-modal {
+  width: min(520px, 100%);
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.1rem 1.15rem 1.2rem;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.af-modal h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+}
+
+.af-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.af-card-media-btn,
+.af-lib-media-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: #e8eef2;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.af-card-media-btn img,
+.af-lib-media-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.af-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(11, 31, 58, 0.88);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.af-lightbox-inner {
+  width: min(920px, 100%);
+  background: #0b1f3a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.af-lightbox-img {
+  width: 100%;
+  max-height: min(72vh, 820px);
+  object-fit: contain;
+  background: #111827;
+  display: block;
+}
+
+.af-lightbox-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: #fff;
+}
+
+.af-lightbox-bar .af-meta {
+  margin: 0.15rem 0 0;
+}
+
+.af-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.af-tags button.on {
+  background: rgba(7, 121, 153, 0.15);
+  border-color: var(--af-teal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .af-toast {
+    transition: none;
+  }
+}

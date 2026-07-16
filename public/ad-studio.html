@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Ad Studio — component builder · MedVirtual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #16202b;
+      --muted: #6a7682;
+      --line: #e4e9ee;
+      --bg: #eef1f4;
+      --card: #ffffff;
+      --accent: #0d546b;
+      --font: "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font); background: var(--bg); color: var(--ink); line-height: 1.45; }
+    .wrap {
+      display: grid; grid-template-columns: 1fr 350px; gap: 1.5rem;
+      max-width: 1220px; margin: 0 auto; padding: 1.5rem 1.25rem 4rem;
+    }
+    @media (max-width: 920px) { .wrap { grid-template-columns: 1fr; } }
+    header.page { grid-column: 1 / -1; }
+    .eyebrow { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.35rem; }
+    h1 { margin: 0 0 0.35rem; font-size: 1.5rem; letter-spacing: -0.02em; }
+    .lede { margin: 0; color: var(--muted); font-size: 0.95rem; max-width: 68ch; }
+    .backlink { display: inline-block; margin-top: 0.5rem; font-size: 0.82rem; color: var(--accent); }
+
+    .stage-area { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .toolbar { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; align-items: center; }
+    .seg { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center; }
+    .seg .lbl { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); align-self: center; margin-right: 0.15rem; }
+    .seg button {
+      font: inherit; font-size: 0.82rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 999px;
+      border: 1px solid var(--line); background: #fff; color: var(--accent); cursor: pointer;
+    }
+    .seg button.is-on { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .stage-frame {
+      background: #d7dde3; border-radius: 12px; padding: 14px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); width: 100%; overflow: auto;
+    }
+    .stage-scaler { transform-origin: top center; }
+    .stage { position: relative; overflow: hidden; font-family: var(--font); }
+    .stage .layer { position: absolute; }
+    .stage .l-block { z-index: 1; }
+    .stage .l-person { z-index: 2; }
+    .stage .l-person img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .stage .l-text { z-index: 3; }
+    .stage .headline { font-weight: 900; letter-spacing: -0.03em; text-transform: uppercase; }
+    .stage .brand img { display: block; height: 100%; width: auto; }
+    .stage .price {
+      display: inline-flex; align-items: center; justify-content: center; font-weight: 900;
+      border-radius: 999px; white-space: nowrap; letter-spacing: -0.01em; box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+    .stage .subhead { font-weight: 700; }
+    .stage .callout {
+      display: inline-flex; align-items: center; gap: 10px; font-weight: 800; border-radius: 999px;
+    }
+    .stage .icons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .stage .icon-chip { display: inline-flex; align-items: center; gap: 10px; border-radius: 14px; font-weight: 800; }
+
+    .panel { display: flex; flex-direction: column; gap: 0.9rem; }
+    .panel h2 { margin: 0; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .el { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 0.75rem 0.85rem; }
+    .el__head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .el__head strong { font-size: 0.92rem; }
+    .el label.field { display: block; margin-top: 0.55rem; font-size: 0.72rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .el input[type="text"], .el select {
+      width: 100%; margin-top: 0.25rem; font: inherit; font-size: 0.9rem;
+      padding: 0.45rem 0.55rem; border-radius: 8px; border: 1px solid var(--line); color: var(--ink); background: #fff;
+    }
+    .switch { position: relative; display: inline-block; width: 40px; height: 22px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; inset: 0; background: #cbd3da; border-radius: 999px; transition: 0.15s; cursor: pointer; }
+    .slider::before { content: ""; position: absolute; height: 16px; width: 16px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: 0.15s; }
+    .switch input:checked + .slider { background: var(--accent); }
+    .switch input:checked + .slider::before { transform: translateX(18px); }
+    .actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .btn { font: inherit; font-weight: 800; font-size: 0.9rem; cursor: pointer; padding: 0.6rem 0.95rem; border-radius: 10px; border: none; color: #fff; background: var(--accent); }
+    .btn.secondary { background: #fff; color: var(--accent); border: 1px solid var(--line); }
+    .hint { font-size: 0.76rem; color: var(--muted); margin: 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="page">
+      <p class="eyebrow">Ad Studio · component builder</p>
+      <h1>Build the ad from components — like a website</h1>
+      <p class="lede">Person, headline, sub-line, callout, price and icons are <strong>separate layers</strong> drawn in code. Pick a size, toggle components, edit copy — the same pieces recompose for every Meta ratio and later feed video variations. Starting neutral (white / navy); color comes once the system is right.</p>
+      <a class="backlink" href="/ideas.html">← Back to New Ad Ideas</a>
+    </header>
+
+    <section class="stage-area">
+      <div class="toolbar">
+        <div class="seg" id="ratioBar">
+          <span class="lbl">Size</span>
+          <button type="button" data-ratio="1x1">1:1</button>
+          <button type="button" data-ratio="4x5" class="is-on">4:5</button>
+          <button type="button" data-ratio="9x16">9:16</button>
+          <button type="button" data-ratio="1.91x1">Wide</button>
+        </div>
+        <div class="seg" id="themeBar">
+          <span class="lbl">Theme</span>
+          <button type="button" data-theme="white" class="is-on">White</button>
+          <button type="button" data-theme="light">Light</button>
+          <button type="button" data-theme="navy">Navy</button>
+        </div>
+      </div>
+      <div class="stage-frame" id="stageFrame">
+        <div class="stage-scaler" id="stageScaler">
+          <div class="stage" id="stage"></div>
+        </div>
+      </div>
+      <p class="hint" id="sizeHint"></p>
+    </section>
+
+    <aside class="panel">
+      <h2>Components</h2>
+      <div id="elementList"></div>
+      <div class="actions">
+        <button class="btn" id="exportBtn">Export PNG</button>
+        <button class="btn secondary" id="exportAllBtn">Export all 4</button>
+      </div>
+      <p class="hint">Exports at true Meta pixels. These components are the library — the same layers will drive video variations.</p>
+    </aside>
+  </div>
+
+  <script type="module">
+    import { toPng } from 'https://esm.sh/html-to-image@1.11.13';
+
+    const RATIOS = {
+      '1x1':    { w: 1080, h: 1080, label: '1:1 · 1080×1080 · square feed' },
+      '4x5':    { w: 1080, h: 1350, label: '4:5 · 1080×1350 · primary feed' },
+      '9x16':   { w: 1080, h: 1920, label: '9:16 · 1080×1920 · Stories / Reels' },
+      '1.91x1': { w: 1200, h: 628,  label: '1.91:1 · 1200×628 · wide / link' },
+    };
+
+    const THEMES = {
+      white: { bg: '#ffffff', block: 'linear-gradient(160deg,#eaf0f4 0%,#d9e4ea 100%)', ink: '#0f1f2b', sub: '#51616f', accent: '#0d546b', priceInk: '#ffffff', logo: '/assets/brand/medvirtual/logo-colored.svg', chipBg: '#ffffff', chipInk: '#0f1f2b', calloutBg: 'rgba(13,84,107,0.08)' },
+      light: { bg: '#eef2f5', block: 'linear-gradient(160deg,#ffffff 0%,#e0e8ee 100%)', ink: '#0f1f2b', sub: '#51616f', accent: '#0d546b', priceInk: '#ffffff', logo: '/assets/brand/medvirtual/logo-colored.svg', chipBg: '#ffffff', chipInk: '#0f1f2b', calloutBg: 'rgba(13,84,107,0.08)' },
+      navy: { bg: '#0B1F3A', block: 'linear-gradient(160deg,#123a63 0%,#08192c 100%)', ink: '#ffffff', sub: '#c3d4e0', accent: '#39c6ec', priceInk: '#04121f', logo: '/assets/brand/medvirtual/logo-white.svg', chipBg: 'rgba(255,255,255,0.95)', chipInk: '#0f1f2b', calloutBg: 'rgba(255,255,255,0.12)' },
+    };
+
+    const PEOPLE = {
+      cobalt: '/assets/video-elements/people/admin-cobalt.png',
+      lime: '/assets/video-elements/people/admin-lime.png',
+    };
+
+    // Per-ratio placement (true pixels). Every component is positioned by us so
+    // nothing clips and the same library recomposes for every size.
+    const LAYOUTS = {
+      '1x1': {
+        block:   { left: 560, top: 0, width: 520, height: 1080, radius: 0 },
+        person:  { right: -30, bottom: 0, width: 560, height: 1050, pos: 'bottom center' },
+        brand:   { left: 64, top: 64, h: 46 },
+        headline:{ left: 64, top: 156, width: 460, size: 96, lh: 0.96 },
+        subhead: { left: 66, top: 560, width: 440, size: 32 },
+        callout: { left: 66, top: 648, size: 28, padX: 22 },
+        price:   { left: 66, top: 732, size: 66, padX: 30 },
+        icons:   { left: 64, top: 872, size: 26, chipPadX: 18, chipPadY: 14 },
+      },
+      '4x5': {
+        block:   { left: 560, top: 0, width: 520, height: 1350, radius: 0 },
+        person:  { right: -30, bottom: 0, width: 590, height: 1320, pos: 'bottom center' },
+        brand:   { left: 66, top: 72, h: 50 },
+        headline:{ left: 66, top: 176, width: 448, size: 104, lh: 0.96 },
+        subhead: { left: 68, top: 632, width: 440, size: 34 },
+        callout: { left: 68, top: 728, size: 30, padX: 24 },
+        price:   { left: 68, top: 818, size: 72, padX: 32 },
+        icons:   { left: 66, top: 958, size: 28, chipPadX: 20, chipPadY: 16 },
+      },
+      '9x16': {
+        block:   { left: 0, top: 1010, width: 1080, height: 910, radius: 0 },
+        person:  { left: 0, right: 0, bottom: 0, width: 1080, height: 1120, pos: 'bottom center' },
+        brand:   { left: 72, top: 120, h: 54 },
+        headline:{ left: 72, top: 240, width: 940, size: 126, lh: 0.95 },
+        subhead: { left: 74, top: 786, width: 900, size: 40 },
+        callout: { left: 74, top: 872, size: 36, padX: 28 },
+        price:   { right: 72, top: 240, size: 84, padX: 36 },
+        icons:   { left: 74, top: 872, size: 32, chipPadX: 22, chipPadY: 16 },
+      },
+      '1.91x1': {
+        block:   { left: 720, top: 0, width: 480, height: 628, radius: 0 },
+        person:  { right: -20, bottom: 0, width: 520, height: 628, pos: 'bottom center' },
+        brand:   { left: 54, top: 48, h: 40 },
+        headline:{ left: 54, top: 112, width: 600, size: 82, lh: 0.95 },
+        subhead: { left: 56, top: 446, width: 560, size: 26 },
+        callout: { left: 56, top: 520, size: 24, padX: 20 },
+        price:   { right: 60, top: 60, size: 58, padX: 26 },
+        icons:   { left: 56, top: 528, size: 22, chipPadX: 16, chipPadY: 12 },
+      },
+    };
+
+    const ICONS = {
+      phone: 'M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1.5 1.5 0 0 1 1.5-.36c1.16.4 2.4.62 3.68.62A1.42 1.42 0 0 1 22 16.88V20a2 2 0 0 1-2 2C10.06 22 2 13.94 2 4a2 2 0 0 1 2-2h3.12A1.42 1.42 0 0 1 8.54 3.42c0 1.28.22 2.52.62 3.68a1.5 1.5 0 0 1-.36 1.5l-2.2 2.2Z',
+      calendar: 'M7 2v3M17 2v3M3 9h18M5 4h14a2 2 0 0 1 2 2v14H3V6a2 2 0 0 1 2-2Z',
+      shield: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z',
+    };
+
+    const state = {
+      ratio: '4x5',
+      theme: 'white',
+      person: 'cobalt',
+      elements: {
+        block:    { on: true },
+        person:   { on: true },
+        brand:    { on: true },
+        headline: { on: true, line1: 'HIRE A', line2: 'VIRTUAL', line3: 'MEDICAL', line4: 'ADMIN' },
+        subhead:  { on: true, text: 'Dedicated staff who join your team.' },
+        callout:  { on: false, text: 'Book more patients' },
+        price:    { on: false, text: '$10/hr' },
+        icons:    { on: false },
+      },
+    };
+
+    const ELEMENT_DEFS = [
+      { key: 'person', label: 'Person', fields: [], select: { key: 'person', options: [['cobalt', 'Cobalt scrubs'], ['lime', 'Lime scrubs']] } },
+      { key: 'block', label: 'Color block', fields: [] },
+      { key: 'brand', label: 'Brand mark', fields: [] },
+      { key: 'headline', label: 'Headline', fields: [
+        { name: 'line1', label: 'Line 1' },
+        { name: 'line2', label: 'Line 2 (accent)' },
+        { name: 'line3', label: 'Line 3' },
+        { name: 'line4', label: 'Line 4' },
+      ] },
+      { key: 'subhead', label: 'Sub-line', fields: [{ name: 'text', label: 'Text' }] },
+      { key: 'callout', label: 'Callout chip', fields: [{ name: 'text', label: 'Text' }] },
+      { key: 'price', label: 'Price badge', fields: [{ name: 'text', label: 'Text' }] },
+      { key: 'icons', label: 'Benefit icons', fields: [] },
+    ];
+
+    const stage = document.getElementById('stage');
+    const scaler = document.getElementById('stageScaler');
+    const frame = document.getElementById('stageFrame');
+    const sizeHint = document.getElementById('sizeHint');
+
+    function box(o) {
+      const parts = [];
+      if (o.left != null) parts.push(`left:${o.left}px`);
+      if (o.right != null) parts.push(`right:${o.right}px`);
+      if (o.top != null) parts.push(`top:${o.top}px`);
+      if (o.bottom != null) parts.push(`bottom:${o.bottom}px`);
+      if (o.width != null) parts.push(`width:${o.width}px`);
+      if (o.height != null) parts.push(`height:${o.height}px`);
+      return parts.join(';');
+    }
+
+    function iconChip(name, label, t, size, padX, padY) {
+      return `<span class="icon-chip" style="font-size:${size}px;padding:${padY}px ${padX}px;background:${t.chipBg};color:${t.chipInk}">
+        <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${t.accent}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="${ICONS[name]}"/></svg>
+        ${label}</span>`;
+    }
+
+    function render() {
+      const r = RATIOS[state.ratio];
+      const L = LAYOUTS[state.ratio];
+      const t = THEMES[state.theme];
+      const e = state.elements;
+      stage.style.width = r.w + 'px';
+      stage.style.height = r.h + 'px';
+      stage.style.background = t.bg;
+
+      let html = '';
+
+      if (e.block.on) {
+        html += `<div class="layer l-block" style="${box(L.block)};background:${t.block};border-radius:${L.block.radius || 0}px"></div>`;
+      }
+      if (e.person.on) {
+        html += `<div class="layer l-person" style="${box(L.person)}"><img src="${PEOPLE[state.person]}" style="object-position:${L.person.pos}" crossorigin="anonymous" /></div>`;
+      }
+      if (e.brand.on) {
+        const b = L.brand;
+        html += `<div class="layer l-text brand" style="left:${b.left}px;top:${b.top}px;height:${b.h}px"><img src="${t.logo}" crossorigin="anonymous" /></div>`;
+      }
+      if (e.headline.on) {
+        const h = L.headline;
+        const line = (txt, accent) => txt ? `<div style="${accent ? `color:${t.accent}` : `color:${t.ink}`}">${txt}</div>` : '';
+        html += `<div class="layer l-text headline" style="left:${h.left}px;top:${h.top}px;width:${h.width}px;font-size:${h.size}px;line-height:${h.lh}">
+          ${line(e.headline.line1, false)}${line(e.headline.line2, true)}${line(e.headline.line3, false)}${line(e.headline.line4, false)}
+        </div>`;
+      }
+      if (e.subhead.on) {
+        const s = L.subhead;
+        html += `<div class="layer l-text subhead" style="left:${s.left}px;top:${s.top}px;width:${s.width}px;font-size:${s.size}px;color:${t.sub}">${e.subhead.text}</div>`;
+      }
+      if (e.callout.on) {
+        const c = L.callout;
+        html += `<div class="layer l-text" style="left:${c.left}px;top:${c.top}px"><span class="callout" style="font-size:${c.size}px;padding:${Math.round(c.size * 0.5)}px ${c.padX}px;background:${t.calloutBg};border:2px solid ${t.accent};color:${t.ink}">${e.callout.text}</span></div>`;
+      }
+      if (e.price.on) {
+        const p = L.price;
+        html += `<div class="layer l-text" style="${box({ left: p.left, right: p.right, top: p.top })}"><span class="price" style="font-size:${p.size}px;padding:${Math.round(p.size * 0.28)}px ${p.padX}px;background:${t.accent};color:${t.priceInk}">${e.price.text}</span></div>`;
+      }
+      if (e.icons.on) {
+        const ic = L.icons;
+        html += `<div class="layer l-text icons" style="left:${ic.left}px;top:${ic.top}px;font-size:${ic.size}px">
+          ${iconChip('phone', 'Calls', t, ic.size, ic.chipPadX, ic.chipPadY)}
+          ${iconChip('calendar', 'Scheduling', t, ic.size, ic.chipPadX, ic.chipPadY)}
+          ${iconChip('shield', 'Intake', t, ic.size, ic.chipPadX, ic.chipPadY)}
+        </div>`;
+      }
+
+      stage.innerHTML = html;
+      sizeHint.textContent = r.label;
+      fit();
+    }
+
+    function fit() {
+      const r = RATIOS[state.ratio];
+      const avail = frame.clientWidth - 28;
+      const maxH = Math.min(window.innerHeight * 0.72, 900);
+      const scale = Math.min(1, avail / r.w, maxH / r.h);
+      scaler.style.transform = `scale(${scale})`;
+      scaler.style.width = r.w * scale + 'px';
+      scaler.style.height = r.h * scale + 'px';
+    }
+
+    function buildPanel() {
+      const list = document.getElementById('elementList');
+      list.innerHTML = ELEMENT_DEFS.map((def) => {
+        const el = state.elements[def.key];
+        const fields = def.fields.map((f) => `
+          <label class="field">${f.label}
+            <input type="text" data-el="${def.key}" data-field="${f.name}" value="${(el[f.name] || '').replace(/"/g, '&quot;')}" />
+          </label>`).join('');
+        const select = def.select ? `
+          <label class="field">Variant
+            <select data-personselect>
+              ${def.select.options.map((o) => `<option value="${o[0]}" ${state.person === o[0] ? 'selected' : ''}>${o[1]}</option>`).join('')}
+            </select>
+          </label>` : '';
+        return `<div class="el">
+          <div class="el__head">
+            <strong>${def.label}</strong>
+            <span class="switch"><input type="checkbox" data-toggle="${def.key}" ${el.on ? 'checked' : ''}/><span class="slider"></span></span>
+          </div>
+          ${select}${fields}
+        </div>`;
+      }).join('');
+
+      list.querySelectorAll('[data-toggle]').forEach((cb) => {
+        cb.addEventListener('change', () => {
+          state.elements[cb.getAttribute('data-toggle')].on = cb.checked;
+          render();
+        });
+      });
+      list.querySelectorAll('input[type="text"]').forEach((inp) => {
+        inp.addEventListener('input', () => {
+          state.elements[inp.getAttribute('data-el')][inp.getAttribute('data-field')] = inp.value;
+          render();
+        });
+      });
+      const ps = list.querySelector('[data-personselect]');
+      if (ps) ps.addEventListener('change', () => { state.person = ps.value; render(); });
+    }
+
+    document.getElementById('ratioBar').querySelectorAll('button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#ratioBar button').forEach((b) => b.classList.toggle('is-on', b === btn));
+        state.ratio = btn.getAttribute('data-ratio');
+        render();
+      });
+    });
+    document.getElementById('themeBar').querySelectorAll('button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#themeBar button').forEach((b) => b.classList.toggle('is-on', b === btn));
+        state.theme = btn.getAttribute('data-theme');
+        render();
+      });
+    });
+
+    async function exportOne(ratio) {
+      const prev = state.ratio;
+      state.ratio = ratio;
+      render();
+      scaler.style.transform = 'scale(1)';
+      await new Promise((res) => setTimeout(res, 150));
+      const dataUrl = await toPng(stage, { pixelRatio: 1, cacheBust: true, width: RATIOS[ratio].w, height: RATIOS[ratio].h });
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `MV_AdStudio_${state.theme}_${ratio}.png`;
+      a.click();
+      state.ratio = prev;
+      render();
+    }
+
+    document.getElementById('exportBtn').addEventListener('click', () => exportOne(state.ratio));
+    document.getElementById('exportAllBtn').addEventListener('click', async () => {
+      for (const ratio of Object.keys(RATIOS)) {
+        await exportOne(ratio);
+        await new Promise((res) => setTimeout(res, 300));
+      }
+    });
+
+    window.addEventListener('resize', fit);
+    buildPanel();
+    render();
+  </script>
+</body>
+</html>

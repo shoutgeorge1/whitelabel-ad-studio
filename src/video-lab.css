@@ -1,0 +1,268 @@
+.vpl-app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.15rem 1rem 4rem;
+  font-family: "Be Vietnam", Inter, Arial, sans-serif;
+  color: #161511;
+}
+
+.vpl-hero h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.5rem, 3vw, 2.05rem);
+  letter-spacing: -0.03em;
+}
+
+.vpl-hero p {
+  margin: 0;
+  max-width: 42rem;
+  color: #516472;
+}
+
+.vpl-stages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  margin: 1.15rem 0 1.35rem;
+}
+
+@media (max-width: 800px) {
+  .vpl-stages { grid-template-columns: 1fr; }
+}
+
+.vpl-stages article {
+  background: #fff;
+  border: 1px solid #d5e2ea;
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+}
+
+.vpl-stages h2 {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  color: #0D546B;
+}
+
+.vpl-stages p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #516472;
+}
+
+.vpl-stages a {
+  color: #077999;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.vpl-section {
+  background: #fff;
+  border: 1px solid #d5e2ea;
+  border-radius: 14px;
+  padding: 1rem 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.vpl-section h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.vpl-section .lede {
+  margin: 0 0 0.85rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.vpl-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+@media (max-width: 720px) {
+  .vpl-grid-2 { grid-template-columns: 1fr; }
+}
+
+.vpl-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 750;
+  color: #64748b;
+}
+
+.vpl-field input,
+.vpl-field select,
+.vpl-field textarea,
+.vpl-actions button,
+.vpl-toolbar button,
+.vpl-toolbar a {
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #0D546B;
+}
+
+.vpl-actions,
+.vpl-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.vpl-actions button.primary,
+.vpl-toolbar button.primary {
+  background: #077999;
+  border-color: #077999;
+  color: #fff;
+  cursor: pointer;
+}
+
+.vpl-toolbar a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.vpl-brief-out {
+  margin-top: 0.85rem;
+  background: #f8fafc;
+  border: 1px dashed #94a3b8;
+  border-radius: 10px;
+  padding: 0.85rem;
+  white-space: pre-wrap;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #334155;
+  max-height: 360px;
+  overflow: auto;
+}
+
+.vpl-assign {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.vpl-card {
+  border: 1px solid #d5e2ea;
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  background: #fff;
+}
+
+.vpl-card h3 {
+  margin: 0.15rem 0 0.35rem;
+  font-size: 1rem;
+}
+
+.vpl-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.vpl-pill {
+  font-size: 0.68rem;
+  font-weight: 750;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+}
+
+.vpl-pill.type { background: #ecfeff; border-color: #a5f3fc; color: #155e75; }
+.vpl-pill.wait { background: #fff7ed; border-color: #fed7aa; color: #9a3412; }
+
+.vpl-card dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.vpl-card dt { font-weight: 750; color: #0D546B; }
+.vpl-card dd { margin: 0; color: #516472; }
+
+.vpl-preview-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .vpl-preview-grid { grid-template-columns: 1fr; }
+}
+
+.vpl-player {
+  background: #0f172a;
+  border-radius: 12px;
+  padding: 0.5rem;
+}
+
+.vpl-checks {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.vpl-checks label {
+  display: flex;
+  gap: 0.45rem;
+  align-items: flex-start;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.vpl-rules {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #405766;
+  font-size: 0.9rem;
+}
+
+.vpl-guide ol {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: #405766;
+  font-size: 0.9rem;
+}
+
+.vpl-note {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0.5rem 0 0;
+}
+
+.vpl-review {
+  border: 2px solid #077999;
+  background: #f0f9fc;
+}
+
+@font-face {
+  font-family: "Be Vietnam";
+  src: url("/assets/brand/medvirtual/fonts/BeVietnam-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Be Vietnam";
+  src: url("/assets/brand/medvirtual/fonts/BeVietnam-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Be Vietnam";
+  src: url("/assets/brand/medvirtual/fonts/BeVietnam-Bold.ttf") format("truetype");
+  font-weight: 800;
+  font-display: swap;
+}

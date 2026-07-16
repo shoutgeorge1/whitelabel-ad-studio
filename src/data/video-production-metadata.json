@@ -1,0 +1,86 @@
+{
+  "familyDefaults": {
+    "blue_scrubs_headset": {
+      "static_use": "yes",
+      "remotion_use": "high",
+      "veo_video_use": "high",
+      "editor_use": "high",
+      "best_video_format": "talking-head",
+      "recommended_script_style": "practice operations POV / remote medical assistant explainer",
+      "video_editor_notes": "Hero image for call handling, scheduling, follow-up. Use headset + laptop as visual anchor. Light Ken Burns on 9:16. Leave right side for text.",
+      "veo_prompt_notes": "Draft: Medical admin wearing headset at laptop in bright office. Calm, professional. No patient data on screen.",
+      "compliance_risks": ["Do not imply speaker is a real doctor", "No fake testimonials", "No patient PHI on screens"],
+      "do_not_use_for": ["fake customer testimonial", "fake doctor endorsement", "guaranteed savings claims"]
+    },
+    "teal_blouse_admin": {
+      "static_use": "yes",
+      "remotion_use": "high",
+      "veo_video_use": "high",
+      "editor_use": "high",
+      "best_video_format": "voiceover",
+      "recommended_script_style": "front desk backup scenario / office workflow explainer",
+      "video_editor_notes": "Strong for missed calls and scheduling angles. Voiceover over image with text reveals. 9:16 first.",
+      "veo_prompt_notes": "Draft: Professional admin at laptop with headset, multitasking office support. Clean healthcare office.",
+      "compliance_risks": ["No fake clinic owner POV unless approved", "No patient stories"],
+      "do_not_use_for": ["fake testimonial", "I'm a real customer framing"]
+    },
+    "white_blouse_admin": {
+      "static_use": "yes",
+      "remotion_use": "medium",
+      "veo_video_use": "medium",
+      "editor_use": "medium",
+      "best_video_format": "office scenario",
+      "recommended_script_style": "office manager relief / admin backlog",
+      "video_editor_notes": "Use centered crops only. Text-led native ad. Avoid edge crops in video.",
+      "veo_prompt_notes": "Draft: Office admin at desk with laptop, professional support role. No medical claims.",
+      "compliance_risks": ["Awkward crops on video", "Do not over-promise staffing outcomes"],
+      "do_not_use_for": ["talking-head first batch unless manually approved", "edge-crop exports"]
+    },
+    "navy_scrubs_admin": {
+      "static_use": "yes",
+      "remotion_use": "medium",
+      "veo_video_use": "medium",
+      "editor_use": "medium",
+      "best_video_format": "office scenario",
+      "recommended_script_style": "scheduling support / insurance verification workflow",
+      "video_editor_notes": "Floating icons may clash with motion text — simplify overlay in edit.",
+      "veo_prompt_notes": "Draft: Healthcare admin in scrubs handling scheduling tasks at computer.",
+      "compliance_risks": ["Icons compete with captions", "Not clinical care imagery"],
+      "do_not_use_for": ["clinical treatment claims", "patient care promises"]
+    },
+    "wide_office": {
+      "static_use": "yes",
+      "remotion_use": "medium",
+      "veo_video_use": "low",
+      "editor_use": "medium",
+      "best_video_format": "background only",
+      "recommended_script_style": "voiceover / checklist reveal over desk scene",
+      "video_editor_notes": "Better as B-roll or background plate. Pan across desk/charts. Text-heavy overlay.",
+      "veo_prompt_notes": "Draft: Medical office desk with charts and laptop — no identifiable patients.",
+      "compliance_risks": ["Charts may imply unverified cost claims"],
+      "do_not_use_for": ["hero talking-head", "exact pricing on screen"]
+    },
+    "landing_headshot": {
+      "static_use": "yes",
+      "remotion_use": "low",
+      "veo_video_use": "low",
+      "editor_use": "low",
+      "best_video_format": "text-animation",
+      "recommended_script_style": "trust / team-style / meet your remote support",
+      "video_editor_notes": "Secondary wave only. Simple quote card or team intro. Not first cold video batch.",
+      "veo_prompt_notes": "Do not generate talking-head from headshot without legal approval. Use as reference still only.",
+      "compliance_risks": ["Low-res upscale on 481px assets", "Fake testimonial if given voice"],
+      "do_not_use_for": ["first-batch talking-head", "fake customer voiceover", "Veo lip-sync without approval"]
+    }
+  },
+  "angleMap": {
+    "Missed Calls": "Answer more patient calls",
+    "Front Desk Backup": "Give your front desk reliable backup",
+    "Follow-Up": "Keep patient follow-up moving",
+    "Workflow": "Back-office workflow support",
+    "Scheduling": "Keep the calendar moving",
+    "Office Manager Relief": "Relief for overloaded office managers",
+    "Payroll Pressure": "Add capacity without another in-office hire",
+    "Staffing Gap": "Fill the staffing gap remotely"
+  }
+}

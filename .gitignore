@@ -1,0 +1,43 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Private audience / lead data (never commit)
+_private/
+*.csv
+!public/exports/meta-*.csv
+!public/exports/meta-upload-ready/*.csv
+*.xlsx
+*.xls
+audience_audit_report.md
+cleaned_meta_upload.csv
+rejected_or_questionable_rows.csv
+
+# Local full-res marketing masters (too large for git / Vercel)
+.local-masters/
+.tmp-others-upload/
+.tmp-brand-upload/
+
+# Local browser/screenshot verification dumps
+.verify*.png

@@ -1,0 +1,48 @@
+{
+  "name": "whitelabel-ad-studio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "generate:vma": "node scripts/generate-motion-concept-data.mjs && node scripts/generate-motion-concept-lab.mjs && node scripts/generate-vma-site.mjs",
+    "extract:components": "node scripts/extract-master-components.mjs",
+    "generate:images": "node scripts/generate-image-variations.mjs",
+    "generate:studio": "npm run generate:vma",
+    "generate:ideas": "npm run generate:vma",
+    "generate:competitors": "npm run generate:vma",
+    "generate:competitor-snaps": "node scripts/generate-competitor-snapshots.mjs",
+    "generate:motion-lab": "node scripts/generate-motion-concept-lab.mjs",
+    "generate:video-elements": "node --env-file=.env.local scripts/generate-video-elements.mjs",
+    "generate:foundry": "node scripts/generate-foundry-page.mjs",
+    "generate:video": "node scripts/generate-video-production.mjs",
+    "generate:docs": "npm run generate:vma",
+    "remotion:studio": "remotion studio src/remotion/index.js",
+    "assets:foundry-api": "node --env-file=.env.local scripts/asset-foundry/local-api.mjs",
+    "assets:pull-approved": "node --env-file=.env.local scripts/asset-foundry/pull-approved.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.489",
+    "@remotion/player": "^4.0.489",
+    "@vercel/blob": "^2.6.1",
+    "html-to-image": "^1.11.13",
+    "openai": "^6.46.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.1",
+    "remotion": "^4.0.489",
+    "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "oxlint": "^1.71.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1"
+  }
+}

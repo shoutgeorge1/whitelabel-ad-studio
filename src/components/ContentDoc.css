@@ -1,0 +1,244 @@
+.content-doc {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.content-doc__header {
+  text-align: center;
+  padding-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid #0d9488;
+}
+
+.content-doc__header h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.75rem;
+  color: #0f172a;
+}
+
+.content-doc__subtitle {
+  margin: 0;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.content-doc__date {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.content-doc__block {
+  page-break-inside: avoid;
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.content-doc__block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.content-doc__block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.content-doc__number {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #0d9488;
+}
+
+.content-doc__title {
+  margin: 0.25rem 0;
+  font-size: 1.25rem;
+  color: #0f172a;
+  font-family: ui-monospace, monospace;
+}
+
+.content-doc__meta-line {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.content-doc__edit {
+  margin: -0.5rem 0 1rem;
+  font-size: 0.85rem;
+}
+
+.content-doc__edit a {
+  color: #0891b2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.content-doc__edit a:hover {
+  text-decoration: underline;
+}
+
+.content-doc__warning {
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem;
+  background: #fff7ed;
+  border-left: 3px solid #f97316;
+  color: #9a3412;
+  font-size: 0.9rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.content-doc__production-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.content-doc__meta-chip {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.8rem;
+}
+
+.content-doc__meta-chip span {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.15rem;
+}
+
+.content-doc__meta-chip strong {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.content-doc__mono {
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
+.content-doc__preview-note {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.content-doc__field--verify {
+  background: #fff7ed;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border-left: 3px solid #f97316;
+}
+
+.content-doc__field--qa {
+  background: #f0fdf4;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border-left: 3px solid #22c55e;
+}
+
+.content-doc__qa-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.content-doc__qa-list li {
+  font-size: 0.85rem;
+  padding: 0.2rem 0;
+}
+
+.content-doc__qa-list li.fail {
+  color: #b45309;
+  font-weight: 600;
+}
+
+.content-doc__grid {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 2rem;
+}
+
+.content-doc__preview-col {
+  text-align: center;
+}
+
+.content-doc__file-name {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  font-family: ui-monospace, monospace;
+  color: #64748b;
+}
+
+.content-doc__field {
+  margin-bottom: 1.25rem;
+}
+
+.content-doc__field label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 0.35rem;
+}
+
+.content-doc__field p,
+.content-doc__field ul {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #334155;
+}
+
+.content-doc__field ul {
+  padding-left: 1.25rem;
+}
+
+.content-doc__field a {
+  color: #0891b2;
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+
+.content-doc__field--notes {
+  background: #fffbeb;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border-left: 3px solid #f59e0b;
+}
+
+@media print {
+  .content-doc {
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .content-doc__block {
+    page-break-inside: avoid;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-doc__grid {
+    grid-template-columns: 1fr;
+  }
+}

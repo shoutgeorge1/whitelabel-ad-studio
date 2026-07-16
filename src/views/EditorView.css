@@ -1,0 +1,31 @@
+.editor-view__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.editor-view__file-name {
+  font-size: 0.8rem;
+  font-family: ui-monospace, monospace;
+  color: #64748b;
+}
+
+.editor-view--missing {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+}
+
+.editor-view--missing h2 {
+  margin: 0 0 0.5rem;
+  color: #0f172a;
+}
+
+.editor-view--missing p {
+  margin: 0 0 1.5rem;
+  color: #64748b;
+}
