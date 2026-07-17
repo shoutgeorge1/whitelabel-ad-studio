@@ -29,6 +29,7 @@
     "@remotion/player": "^4.0.489",
     "@vercel/blob": "^2.6.1",
     "html-to-image": "^1.11.13",
+    "jszip": "^3.10.1",
     "openai": "^6.46.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",

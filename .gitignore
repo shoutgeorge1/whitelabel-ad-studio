@@ -41,3 +41,4 @@ rejected_or_questionable_rows.csv
 
 # Local browser/screenshot verification dumps
 .verify*.png
+.vercel

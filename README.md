@@ -1,19 +1,27 @@
 # Ad Studio
 
-One approved creative in. A placement-ready campaign pack out.
+One master creative in. Google-ready display and video source packs out.
 
-Ad Studio helps founders, media buyers, and lean agencies adapt finished ad
-creative for feed, stories, reels, square, and display placements without
+Ad Studio is currently an internal production workbench for adapting finished
+creative across Google Display, YouTube, and optional Meta placements without
 rebuilding every format by hand.
 
 ## Current product
 
 - Upload a PNG, JPG, or WebP in the browser
-- Preview 4:5, 9:16, 1:1, and 1.91:1 placements
+- Switch between Google Display, Google Video, and Meta production packs
+- Preview responsive-image, common banner, YouTube, Shorts, and social formats
 - Adjust focus and zoom independently for every format
 - See placement safe-zone overlays
 - Preview subtle motion
-- Export correctly sized PNGs individually or as a campaign pack
+- Name campaigns and inspect source-resolution readiness per placement
+- Apply a tuned crop across a pack, then refine formats independently
+- Choose cover or contain fit for extreme banners and placements
+- Toggle safe-zone guides and motion previews during review
+- Restore the most recent campaign and source image locally after a refresh
+- Export PNG, JPG, or WebP stills individually or as one ZIP campaign pack
+- See selected-file size estimates against Google Display’s 150 KB soft limit
+- Include a JSON manifest with formats, dimensions, and crop settings
 
 Files remain local to the browser in the current beta.
 
@@ -28,16 +36,16 @@ Open [http://localhost:5173](http://localhost:5173)
 
 ## Product direction
 
-The first paid offer is a high-touch $99 campaign pack:
+The first goal is to make the tool reliably useful for its owner and employees:
 
-- Four reviewed static adaptations
+- Six-format Google Display packs
+- YouTube landscape, Shorts, and square-video source frames
+- Optional four-format Meta packs
 - Safe-zone and legibility QA
-- One lightweight motion variation
-- One revision round
-- 48-hour target turnaround
+- Repeatable filenames and export workflow
 
-The service validates demand and reveals which corrections should be automated
-before subscriptions, accounts, or a large editor are built.
+External branding, customer intake, and monetization come after the internal
+workflow repeatedly saves production time.
 
 ## Architecture
 
