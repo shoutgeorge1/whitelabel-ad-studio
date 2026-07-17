@@ -1,0 +1,23 @@
+{
+  "name": "Ad Studio OS",
+  "short_name": "Ad Studio",
+  "description": "Turn one approved ad into placement-ready campaign packs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f5f7",
+  "theme_color": "#08111f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

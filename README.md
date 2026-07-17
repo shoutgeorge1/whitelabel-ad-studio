@@ -1,29 +1,25 @@
-# Ad Studio
+# Ad Studio OS
 
-One master creative in. Google-ready display and video source packs out.
+**https://adstudioos.com**
 
-Ad Studio is currently an internal production workbench for adapting finished
-creative across Google Display, YouTube, and optional Meta placements without
-rebuilding every format by hand.
+One master creative in. Google Display, YouTube, and Meta placement packs out.
 
-## Current product
+Ad Studio OS is a browser-based production workbench for adapting finished creative
+across common ad sizes without rebuilding every format by hand. Files stay local
+to the browser.
 
-- Upload a PNG, JPG, or WebP in the browser
-- Switch between Google Display, Google Video, and Meta production packs
-- Preview responsive-image, common banner, YouTube, Shorts, and social formats
-- Adjust focus and zoom independently for every format
-- See placement safe-zone overlays
-- Preview subtle motion
-- Name campaigns and inspect source-resolution readiness per placement
-- Apply a tuned crop across a pack, then refine formats independently
-- Choose cover or contain fit for extreme banners and placements
-- Toggle safe-zone guides and motion previews during review
-- Restore the most recent campaign and source image locally after a refresh
-- Export PNG, JPG, or WebP stills individually or as one ZIP campaign pack
+## Product
+
+- Upload a PNG, JPG, or WebP
+- Switch between Google Display, Google Video, and Meta packs
+- Adjust focus and zoom independently per format
+- Choose cover or contain fit
+- Review safe-zone guides and motion previews
+- Name campaigns and check source-resolution readiness
+- Restore the last campaign locally after a refresh
+- Export PNG, JPG, or WebP stills individually or as one ZIP
 - See selected-file size estimates against Google Display’s 150 KB soft limit
 - Include a JSON manifest with formats, dimensions, and crop settings
-
-Files remain local to the browser in the current beta.
 
 ## Quick start
 
@@ -34,32 +30,29 @@ npm run dev
 
 Open [http://localhost:5173](http://localhost:5173)
 
-## Product direction
+## Deploy
 
-The first goal is to make the tool reliably useful for its owner and employees:
+Production deploys from `main` to [adstudioos.com](https://adstudioos.com) via Vercel.
 
-- Six-format Google Display packs
-- YouTube landscape, Shorts, and square-video source frames
-- Optional four-format Meta packs
-- Safe-zone and legibility QA
-- Repeatable filenames and export workflow
+```bash
+npm run build
+npx vercel --prod
+```
 
-External branding, customer intake, and monetization come after the internal
-workflow repeatedly saves production time.
+Static site assets live in `static/` (favicon, OG image, robots, sitemap).
+Inherited internal HTML under `public/` is kept as source material and is not
+copied into the production build.
 
 ## Architecture
 
-- `src/App.tsx` — customer-facing campaign-pack workflow
-- `src/index.css` — responsive product site and workspace
+- `src/App.tsx` — campaign-pack workflow
+- `src/index.css` — product site and workspace
+- `static/` — public production assets
 - `scripts/` and `src/remotion/` — inherited production and motion R&D
-- `public/` — inherited internal reference output; intentionally excluded from
-  the production Vite build
 
-## Next production milestones
+## Next milestones
 
-1. Replace placeholder contact email and choose a product name/domain.
-2. Add a real intake/payment flow for the high-touch pilot.
-3. Add AI-assisted outpainting/recomposition with explicit customer review.
-4. Render downloadable MP4 motion variations through Remotion.
-5. Add accounts, project persistence, usage limits, and subscriptions only
-   after repeat demand is demonstrated.
+1. Cloud-saved projects and team handoff
+2. Layout-aware reframing / outpainting with review
+3. Downloadable MP4 motion variations
+4. Accounts and usage limits only after repeat demand is clear

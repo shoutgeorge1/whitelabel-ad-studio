@@ -5,9 +5,9 @@ import { resolve } from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Keep inherited internal HTML/assets in the repository as source material,
-  // but never copy them into the customer-facing production deployment.
-  publicDir: false,
+  // Serve only production static assets. Inherited internal HTML under public/
+  // stays in the repo as source material and is never deployed.
+  publicDir: 'static',
   server: {
     watch: {
       // Large import dumps can lock files and crash Vite's watcher on Windows

@@ -502,6 +502,7 @@ export default function App() {
   }, [exportKind, fitMode, imageUrl, selectedCrop, selectedFormat]);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = window.setInterval(() => {
       setHeroPlatformIndex((current) => (current + 1) % HERO_PLATFORMS.length);
     }, 2200);
@@ -664,16 +665,19 @@ export default function App() {
 
   return (
     <div className="site-shell">
+      <a className="skip-link" href="#workspace">
+        Skip to workbench
+      </a>
       <header className="site-header">
-        <a className="brand" href="/" aria-label="Ad Studio home">
+        <a className="brand" href="/" aria-label="Ad Studio OS home">
           <span className="brand__mark">AS</span>
-          <span>Ad Studio</span>
+          <span>Ad Studio OS</span>
         </a>
         <nav className="site-nav" aria-label="Primary">
           <a href="#workspace">Workbench</a>
           <a href="#how-it-works">Workflow</a>
-          <a className="button button--small button--outline" href="#roadmap">
-            Roadmap
+          <a className="button button--small button--outline" href="#workspace">
+            Start packing
           </a>
         </nav>
       </header>
@@ -681,7 +685,7 @@ export default function App() {
       <main>
         <section className="hero">
           <div className="hero__copy">
-            <p className="eyebrow">Your ad production workbench</p>
+            <p className="eyebrow">Ad production workbench</p>
             <h1>
               <span className="hero__lead">One master ad.</span>
               <span className="hero__line">
@@ -1041,10 +1045,13 @@ export default function App() {
         <section className="process" id="how-it-works">
           <div className="section-heading section-heading--light">
             <div>
-              <p className="eyebrow">Your repeatable workflow</p>
+              <p className="eyebrow">Repeatable workflow</p>
               <h2>Make the master usable everywhere.</h2>
             </div>
-            <p>Built first for your own display and video production, then usable by employees or client teams.</p>
+            <p>
+              Built for graphics and media teams that already have a winning creative and need every
+              placement without rebuilding from scratch.
+            </p>
           </div>
           <div className="process__grid">
             <article>
@@ -1070,43 +1077,43 @@ export default function App() {
           </div>
         </section>
 
-        <section className="pricing" id="roadmap">
+        <section className="pricing" id="whats-included">
           <div className="pricing__copy">
-            <p className="eyebrow">Production-first roadmap</p>
-            <h2>Useful for you before it is sold to anyone.</h2>
+            <p className="eyebrow">What’s included</p>
+            <h2>A production pack tool your team can use today.</h2>
             <p>
-              The tool earns its keep by reducing your own production time. Once the workflow is solid,
-              employees can run it—and only then does a branded customer product become worth selling.
+              Files stay in the browser. No account required. Export PNG, JPG, or WebP stills as a
+              single ZIP with a crop manifest for handoff.
             </p>
           </div>
           <div className="price-card">
-            <span className="price-card__flag">Current build</span>
+            <span className="price-card__flag">Free beta</span>
             <div className="price-card__price">
               <strong>V1</strong>
-              <span>internal production tool</span>
+              <span>campaign pack builder</span>
             </div>
             <ul>
               <li>Google Display pack with six formats</li>
               <li>YouTube, Shorts, and square video sources</li>
               <li>Optional Meta placement pack</li>
               <li>Independent crop and safe-zone review</li>
-              <li>Exact-size, consistently named PNG exports</li>
+              <li>ZIP export with PNG, JPG, or WebP</li>
             </ul>
             <a className="button button--primary" href="#workspace">
               Build an ad pack
             </a>
-            <small>Next: saved projects, layout-aware reframing, and real MP4 export.</small>
+            <small>Coming next: cloud projects, smarter reframing, and MP4 export.</small>
           </div>
         </section>
       </main>
 
       <footer className="site-footer">
-        <a className="brand" href="/">
+        <a className="brand" href="/" aria-label="Ad Studio OS home">
           <span className="brand__mark">AS</span>
-          <span>Ad Studio</span>
+          <span>Ad Studio OS</span>
         </a>
         <p>One creative in. A campaign-ready pack out.</p>
-        <a href="https://github.com/shoutgeorge1/whitelabel-ad-studio">Built in public →</a>
+        <span className="site-footer__meta">© {new Date().getFullYear()} · Files stay in your browser</span>
       </footer>
     </div>
   );
