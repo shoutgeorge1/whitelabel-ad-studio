@@ -676,8 +676,8 @@ export default function App() {
         <nav className="site-nav" aria-label="Primary">
           <a href="#workspace">Workbench</a>
           <a href="#how-it-works">Workflow</a>
-          <a className="button button--small button--outline" href="#workspace">
-            Start packing
+          <a className="button button--small button--outline" href="/studio">
+            Open studio
           </a>
         </nav>
       </header>
@@ -700,29 +700,26 @@ export default function App() {
               </span>
             </h1>
             <p className="hero__lede">
-              Turn a finished ad into Google Display and YouTube source packs, with optional Meta
-              formats when the campaign needs them.
+              Build a controlled creative system with your brand, message, imagery, and offer—then
+              adapt it intelligently across social and Google Display placements.
             </p>
             <div className="hero__actions">
               <button
                 className="button button--primary"
                 type="button"
-                onClick={() => {
-                  document.getElementById('workspace')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  window.setTimeout(() => inputRef.current?.click(), 280);
-                }}
+                onClick={() => { window.location.href = '/studio'; }}
               >
-                Start a production pack
+                Build a creative family
               </button>
               <a className="button button--text" href="#workspace">
-                Open workbench <span aria-hidden="true">→</span>
+                Quick crop workbench <span aria-hidden="true">→</span>
               </a>
             </div>
             <div className="hero__proof">
-              <span>Google Display first</span>
-              <span>YouTube + Shorts</span>
-              <span>Optional Meta pack</span>
-              <span>Placement-safe previews</span>
+              <span>Structured templates</span>
+              <span>Brand-safe variants</span>
+              <span>Social + Google Display</span>
+              <span>Campaign-ready exports</span>
             </div>
           </div>
           <div className="hero__visual" aria-hidden="true">
@@ -1045,8 +1042,8 @@ export default function App() {
         <section className="process" id="how-it-works">
           <div className="section-heading section-heading--light">
             <div>
-              <p className="eyebrow">Repeatable workflow</p>
-              <h2>Make the master usable everywhere.</h2>
+              <p className="eyebrow">Repeatable creative system</p>
+              <h2>Control the idea. Adapt the family.</h2>
             </div>
             <p>
               Built for graphics and media teams that already have a winning creative and need every
@@ -1056,23 +1053,23 @@ export default function App() {
           <div className="process__grid">
             <article>
               <span>01</span>
-              <h3>Bring the winner</h3>
-              <p>Upload the approved ad—not another prompt, template, or half-finished concept.</p>
+              <h3>Choose the system</h3>
+              <p>Start from an approved composition built for the campaign strategy—not an empty canvas.</p>
             </article>
             <article>
               <span>02</span>
-              <h3>Adapt with intent</h3>
-              <p>Check composition and safe zones format by format instead of trusting a blind crop.</p>
+              <h3>Control the message</h3>
+              <p>Change headline, support, offer, CTA, brand, and imagery without breaking the hierarchy.</p>
             </article>
             <article>
               <span>03</span>
-              <h3>Prepare video</h3>
-              <p>Preview pan-and-zoom motion for YouTube, Shorts, and square video source frames.</p>
+              <h3>Review every placement</h3>
+              <p>See the same concept adapt across social and display, with warnings where copy runs long.</p>
             </article>
             <article>
               <span>04</span>
               <h3>Launch the pack</h3>
-              <p>Download clearly named files for Google Ads, YouTube, or optional Meta placements.</p>
+              <p>Download exact-size assets, a structured manifest, and a media-buyer launch sheet.</p>
             </article>
           </div>
         </section>
@@ -1080,29 +1077,29 @@ export default function App() {
         <section className="pricing" id="whats-included">
           <div className="pricing__copy">
             <p className="eyebrow">What’s included</p>
-            <h2>A production pack tool your team can use today.</h2>
+            <h2>A controlled production system your team can use today.</h2>
             <p>
-              Files stay in the browser. No account required. Export PNG, JPG, or WebP stills as a
-              single ZIP with a crop manifest for handoff.
+              Create persistent projects and brand kits locally. Build variants from structured
+              templates, review the full placement family, and export an organized ZIP.
             </p>
           </div>
           <div className="price-card">
             <span className="price-card__flag">Free beta</span>
             <div className="price-card__price">
               <strong>V1</strong>
-              <span>campaign pack builder</span>
+              <span>creative production system</span>
             </div>
             <ul>
-              <li>Google Display pack with six formats</li>
-              <li>YouTube, Shorts, and square video sources</li>
-              <li>Optional Meta placement pack</li>
-              <li>Independent crop and safe-zone review</li>
-              <li>ZIP export with PNG, JPG, or WebP</li>
+              <li>Six component-based template systems</li>
+              <li>Persistent projects, brand kits, and variants</li>
+              <li>Four social and five Google Display placements</li>
+              <li>Placement checks, focal points, and motion previews</li>
+              <li>PNG/JPEG ZIP with JSON and CSV manifests</li>
             </ul>
-            <a className="button button--primary" href="#workspace">
-              Build an ad pack
+            <a className="button button--primary" href="/studio">
+              Open Ad Studio OS
             </a>
-            <small>Coming next: cloud projects, smarter reframing, and MP4 export.</small>
+            <small>Local-first beta. Coming next: project handoff, smarter reframing, and MP4 export.</small>
           </div>
         </section>
       </main>

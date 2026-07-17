@@ -14,7 +14,7 @@ function localRoot() {
   return path.join(repoRoot(), '.local-masters', 'asset-foundry');
 }
 
-function useBlob() {
+function shouldUseBlob() {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 }
 
@@ -110,7 +110,7 @@ async function listLocal(prefix, limit = 50, cursor = 0) {
 
 export async function putBytes(pathname, data, contentType = 'application/octet-stream') {
   const p = pathname.startsWith(PREFIX) ? pathname : `${PREFIX}/${pathname}`;
-  if (useBlob()) return putBlob(p, data, contentType);
+  if (shouldUseBlob()) return putBlob(p, data, contentType);
   return putLocal(p, Buffer.isBuffer(data) ? data : Buffer.from(data), contentType);
 }
 
@@ -121,7 +121,7 @@ export async function putJson(pathname, obj) {
 
 export async function getBytes(pathname) {
   const p = pathname.startsWith(PREFIX) ? pathname : `${PREFIX}/${pathname}`;
-  if (useBlob()) {
+  if (shouldUseBlob()) {
     try {
       const { get } = await import('@vercel/blob');
       const result = await get(p, { access: 'private', token: process.env.BLOB_READ_WRITE_TOKEN });
@@ -156,7 +156,7 @@ export async function getJson(pathname) {
 
 export async function listJson(prefix, { limit = 40, cursor = '0' } = {}) {
   const p = prefix.startsWith(PREFIX) ? prefix : `${PREFIX}/${prefix}`;
-  if (useBlob()) {
+  if (shouldUseBlob()) {
     const { list } = await import('@vercel/blob');
     const opts = {
       prefix: p.endsWith('/') ? p : `${p}/`,
@@ -304,4 +304,4 @@ export async function writeAudit(event) {
   return record;
 }
 
-export { PREFIX, useBlob, localRoot };
+export { PREFIX, shouldUseBlob, localRoot };

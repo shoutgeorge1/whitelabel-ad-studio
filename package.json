@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run test && npm run build",
     "lint": "oxlint",
     "preview": "vite preview",
     "generate:vma": "node scripts/generate-motion-concept-data.mjs && node scripts/generate-motion-concept-lab.mjs && node scripts/generate-vma-site.mjs",
@@ -44,6 +47,7 @@
     "@vitejs/plugin-react": "^6.0.3",
     "oxlint": "^1.71.0",
     "typescript": "~6.0.2",
-    "vite": "^8.1.1"
+    "vite": "^8.1.1",
+    "vitest": "^4.1.10"
   }
 }

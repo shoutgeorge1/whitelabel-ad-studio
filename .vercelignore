@@ -1,0 +1,8 @@
+# Customer deployment contains the Ad Studio OS product only.
+# Internal R&D HTML and server-side asset-generation APIs remain in git.
+api/
+public/
+docs/
+_private/
+.local-masters/
+.tmp-*/

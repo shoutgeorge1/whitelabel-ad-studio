@@ -11,6 +11,12 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/studio/:path*",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
